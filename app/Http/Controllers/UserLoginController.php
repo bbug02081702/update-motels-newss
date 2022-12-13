@@ -7,29 +7,26 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+
+class UserLoginController extends Controller
 {
-    public function login(){
-        return view('admin.home.login');
+    public function loginUser(){
+        return view('user.home.index');
     }
 
-    public function loginproses(Request $request){
-        $validated = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
+    public function loginProsesUser(Request $request){
         if(Auth::attempt($request->only('email','password'))){
-            return \redirect('admin/home');
+            return \redirect('');
         }
 
         return \redirect('admin/login');
     }
 
-    public function register(){
-        return view('admin.home.register');
+    public function registerUser(){
+        return view('user.home.dangky');
     }
 
-    public function registeruseradmin(Request $request){
+    public function registerUserStore(Request $request){
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -42,11 +39,11 @@ class LoginController extends Controller
             'remember_token' => Str::random(60),
         ]);
         //  dd($user);
-        return \redirect('admin/login');
+        return \redirect('');
     }
 
-    public function logout(){
+    public function logoutUser(){
         Auth::logout();
-        return \redirect('admin/login');
+        return \redirect('/');
     }
 }

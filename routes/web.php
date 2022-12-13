@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MotelsController;
+use App\Http\Controllers\UserLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,7 @@ Route::controller(MotelsController::class)->group(function(){
     Route::get('/','index')->name('index');
     Route::get('motels/list/{id}', 'showview')->name('motels/list/view');
 
+//--------------------------------ADMIN------------------------------------//
     //xu ly trang chu admin khi login user thanh cong
     Route::get('admin/home', 'adminhome')->name('admin/home');
 
@@ -36,6 +39,28 @@ Route::controller(MotelsController::class)->group(function(){
     Route::get('admin/home/delete/{id}', 'destroy')->name('admin/home/delete'); // xu ly xoa danh sach phong tro
 
 });
+
+
+//-----------------------------------USER-MANAGER-CONTROLLER-----------------------//
+Route::controller(UserController::class)->group(function(){
+    //------------------------------------ADMIN-USER----------------------------//
+   Route::get('admin/home/manageruser', 'indexUserManager')->name('admin/home/manageruser');
+});
+
+
+//------------------------login user-------------------//
+Route::get('user/login', [UserLoginController::class, 'loginUser'])->name('user/login');
+Route::post('user/loginuserproses', [UserLoginController::class, 'loginProsesUser'])->name('user/loginuserproses');
+
+//register-user
+Route::get('user/register', [UserLoginController::class, 'registerUser'])->name('user/register');
+Route::post('user/registeruser', [UserLoginController::class, 'registerUserStore'])->name('user/registeruser');
+
+//logout-user
+Route::get('user/logout', [LoginController::class, 'logoutUser'])->name('user/logout');
+
+
+//------------------------login admin-------------------//
 //login-admin
 Route::get('admin/login', [LoginController::class, 'login'])->name('admin/login');
 Route::post('admin/loginproses', [LoginController::class, 'loginproses'])->name('admin/loginproses');

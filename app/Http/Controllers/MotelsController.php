@@ -10,7 +10,8 @@ class MotelsController extends Controller
 {
     // hien thi trang chu mac dinh cho user
     public function index(){
-       $motels = DB::table('motels')->orderBy('created_at', 'DESC')->paginate(2);
+       $motels = DB::table('motels')->orderBy('created_at', 'DESC')->paginate(2);//sap xep danh sach bai viet theo thu tu bai dang moi nhat
+       $motels_countview = DB::table('motels')->orderBy('count_view', 'DESC')->paginate(2); // sap sep danh sach bai viet thoe thu tu bai dang co luet xem cao nhat
        
     // xu ly tim kiem theo tieu de cho trang chu user
     if($title = request()->title){
@@ -21,9 +22,16 @@ class MotelsController extends Controller
     if($price = request()->price){
         $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('price', 'LIKE', '%'.$price.'%')->get();
     }
-       return view('user.home.index', compact('motels'));
+
+     // xu ly tim kiem theo vi tri cho trang chu user
+     if($address = request()->address){
+        $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('address', 'LIKE', '%'.$address.'%')->get();
+     }
+
+       return view('user.home.index', compact('motels', 'motels_countview'));
     }
-    //
+
+
     // xu ly luot xem chi tiet bai viet
     public function showview($id){
         $post = Motels::find($id);
@@ -34,6 +42,7 @@ class MotelsController extends Controller
         return view('motel.index',compact('motels'));
     }
 
+//------------------------------ADMIN--------------------------------------//
     //hien thi trang chu quan ly cua admin
     public function adminhome(){
         $motels = Motels::orderBy('created_at', 'DESC')->paginate(2);
@@ -54,13 +63,16 @@ class MotelsController extends Controller
     public function store(Request $request){
         $this->validate($request,[
             'title' => 'required',
+            
         ]);
-        $motels = Motels::create($request->all());
         if($request->hasFile('images')){
-            $request->file('images')->move('photocreate/', $request->file('images')->getClientOriginalName());
-            $motels->images = $request->file('images')->getClientOriginalName();
-            $motels->save();
+             $file = $request->images;
+             $filename =  date('Y-m-d-H:i:s')."-".$file->getClientOriginalExtension();
+             Image::make($image->getRealPath())->resize(468, 249)->save('public/img/products/'.$filename);
+             $product->image = 'img/products/'.$filename;
+             $product->save();
         }
+        $motels = Motels::create($request->all());
         return redirect()->route('admin/home')->with('Thongbao', 'Them danh sach phong tro thanh cong');
     }
 
@@ -84,5 +96,5 @@ class MotelsController extends Controller
         $motels->delete();
         return redirect()->route('admin/home')->with('Thongbao', 'Xoa danh sach phong tro thanh cong');
     }
-
+    
 }

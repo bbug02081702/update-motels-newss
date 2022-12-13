@@ -26,11 +26,19 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg">Register in to start your session</p>
-
+        @error('name')
+           <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        @error('email')
+           <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        @error('password')
+           <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <form action="{{route('admin/registeruser')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="name" placeholder="Name">
+            <input type="text" class="form-control" name="name" class="@error('name') is-invalid @enderror" placeholder="Name">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -38,7 +46,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="email" class="form-control" name="email" placeholder="Email">
+            <input type="email" class="form-control" class="@error('email') is-invalid @enderror" name="email" placeholder="Email">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -46,7 +54,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" name="password" placeholder="Password">
+            <input type="password" class="form-control" class="@error('password') is-invalid @enderror" name="password" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>

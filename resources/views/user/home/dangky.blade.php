@@ -190,42 +190,33 @@
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
               <section id="registerForm">
-                <form action="/dang-ky.html" id="frmSubmit" method="post" role="form">
-                  <input name="__RequestVerificationToken" type="hidden" value="Fr9Xlkp1s_wy648wOoL6CgDxcdQXzKOfJQ_0JQkBy7EuGTORrCJK2mC7EavDyegzirs4LoZbglXDEt11Exu0sJVGxwpZAHqvbmhQJmP8DmA1" />
-                  <div class="form-group">
-                    <label class="control-label" for="Email">Email</label>
+                <form action="{{route('user/registeruser')}}" method="POST" enctype="mutilpart/form-data">
+                 @csrf
+                <div class="form-group">
+                    <label class="control-label" for="email">Email</label>
                     <span class="red_require">*</span>
-                    <input class="form-control" data-val="true" data-val-email="Địa chỉ email không hợp lệ" data-val-required="Vui lòng nhập email" id="Email" name="Email" type="text" value="" />
+                    <input class="form-control" data-val="true" data-val-email="Địa chỉ email không hợp lệ" data-val-required="Vui lòng nhập email" id="Email" name="email" type="text" value="" />
                     <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                   </div>
                   <div class="form-group">
                     <label class="control-label" for="Password">Tạo mật khẩu</label>
                     <span class="red_require">*</span>
-                    <input class="form-control" data-val="true" data-val-maxlength="Mật khẩu nhiều nhất 30 ký tự" data-val-maxlength-max="30" data-val-minlength="Mật khẩu ít nhất 6 ký tự" data-val-minlength-min="6" data-val-required="Vui lòng nhập mật khẩu" id="Password" maxlength="30" name="Password" type="password" />
-                    <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                    <input class="form-control" data-val="true" data-val-maxlength="Mật khẩu nhiều nhất 30 ký tự" data-val-maxlength-max="30" data-val-minlength="Mật khẩu ít nhất 6 ký tự" data-val-minlength-min="6" data-val-required="Vui lòng nhập mật khẩu" id="Password" maxlength="30" name="password" type="password" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="password" data-valmsg-replace="true"></span>
                   </div>
                   <div class="form-group">
-                    <label class="control-label" for="FullName">Họ v&#224; t&#234;n</label>
+                    <label class="control-label" for="FullName">Họ va ten</label>
                     <span class="red_require">*</span>
-                    <input class="form-control" data-val="true" data-val-required="Vui lòng nhập họ tên" id="FullName" maxlength="50" name="FullName" type="text" value="" />
+                    <input class="form-control" data-val="true" data-val-required="Vui lòng nhập họ tên" id="FullName" maxlength="50" name="name" type="text" value="" />
                     <span class="field-validation-valid text-danger" data-valmsg-for="FullName" data-valmsg-replace="true"></span>
                   </div>
-                  <div class="form-group">
-                    <label class="control-label" for="Captcha">M&#227; x&#225;c nhận</label>
-                    <span class="red_require">*</span>
-                    <div class="input-group">
-                      <input class="form-control captcha" data-val="true" data-val-required="Vui lòng nhập mã xác nhận" id="Captcha" maxlength="4" name="Captcha" type="text" value="" />
-                      <div class="input-group-addon" style="width:90px; background:none; border:0">
-                        <img src="/captcha/index?t=638053389129149472">
-                      </div>
-                    </div>
                     <div class="span">
-                      <a href="#">Ban da co tai khoan? vui long dang nhap</a>
+                      <a href="/">Ban da co tai khoan? vui long dang nhap</a>
                     </div>
                     <span class="field-validation-valid text-danger" data-valmsg-for="Captcha" data-valmsg-replace="true"></span>
                   </div>
                   <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-block" id="btnSubmit">
+                    <button type="submit" class="btn btn-success btn-block">
                       <i class="fa fa-user-plus"></i> Tạo tài khoản </button>
                   </div>
                 </form>

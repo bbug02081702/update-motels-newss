@@ -2,7 +2,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     @section('content')
-    <h1 class="text-center"> Quan ly danh sach phong tro</h1>
+    <h1 class="text-center"> Quan ly danh sach nguoi dung</h1>
     <div class="container">
     <form action="" class="form-inline" method="get">
     <div class="form-group">
@@ -13,7 +13,7 @@
      </i>
     </button>
     </form>
-      <a href="{{route('admin/home/add')}}" type="button" class="btn btn-success">Them</a>
+      <a href="" type="button" class="btn btn-success">Them</a>
       <div class="card">
         <div class="card-body">
           <div class="row">
@@ -21,13 +21,12 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Tieu de</th>
-                  <th scope="col">Hinh anh</th>
-                  <th scope="col">Danh muc</th>
-                  <th scope="col">Dien tich</th>
-                  <th scope="col">Gia phong</th>
-                  <th scope="col">Dia chi</th>
-                  <th scope="col">Trang thai</th>
+                  <th scope="col">Avatar</th>
+                  <th scope="col">Ho va ten</th>
+                  <th scope="col">User name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Quyen</th>
+                  <th scope="col">Ngay tao</th>
                   <th scope="col">Hanh dong</th>
                 </tr>
               </thead>
@@ -35,37 +34,36 @@
                 @php
                  $no = 1;
                 @endphp
-              @if(count($motels) > 0)
-              @foreach($motels as $index => $row)
+              @if(count($users) > 0)
+              @foreach($users as $index => $rowuser)
                 <tr>
-                  <th scope="row">{{$index + $motels->firstItem()}}</th>
-                  <td><a href="{{url('/motels/list/'.$row->id)}}">{{$row->title}}</a></td>
+                  <th scope="row">{{$index + $users->firstItem()}}</th>
                   <td>
-                  <img src="{{asset('img/products/'.$row->images)}}" style="width: 56px;" alt="">
+                  <img src="{{asset('photocreate/'.$rowuser->avatar)}}" style="width: 50px; height: 50px; border-radius:50%;" alt="">
                   </td>
-                  <td>{{$row->category_id}}</td>
-                  <td>{{$row->area}} m&#178</td>
-                  <td>{{$row->price}} VND</td>
-                  <td>{{$row->address}}</td>
-                  @if($row->approve == 1)
-                  <td><span class="badge bg-success">{{$row->approve}} da duyet</span></td>
+                  <td>{{$rowuser->name}}</td>
+                  <td>{{$rowuser->username}}</td>
+                  <td>{{$rowuser->email}}</td>
+                  @if($rowuser->role == 1)
+                  <td><span class="badge bg-info">{{$rowuser->role}} admin</span></td>
                   @else
-                  <td><span class="badge bg-danger">{{$row->approve}} chua duyet</span></td>
+                  <td><span class="badge bg-warning">{{$rowuser->role}} user</span></td>
                   @endif
+                  <td>{{$rowuser->created_at}}</td>
                   <td>
-                  <a href="{{route('admin/home/edit', $row->id)}}" type="button" class="btn btn-info">Sua</a>
-                  <a href="{{route('admin/home/delete', $row->id)}}" type="button" class="btn btn-danger">Xoa</a>
+                  <a href="" type="button" class="btn btn-info">Sua</a>
+                  <a href="" type="button" class="btn btn-danger">Xoa</a>
                   </td>
                 </tr>
               @endforeach
               @else
                 <tr>
-                  <td colspan="9" class="text-center">Ko tim thay du lieu!!! Vui long thuc hien them du lieu!!!</td>
+                  <td colspan="8" class="text-center">Ko tim thay du lieu!!! Vui long thuc hien them du lieu!!!</td>
                 </tr>
               @endif
               </tbody>
             </table>
-            {{$motels->appends(request()->all())->links()}}
+            {{$users->appends(request()->all())->links()}}
           </div>
         </div>
       </div>

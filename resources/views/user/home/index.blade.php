@@ -18,7 +18,7 @@
       <div class="header-mobile visible-xs">
         <ul>
           <li>
-            <a href="/dang-ky.html">
+            <a href="">
               <i class="fa fa-user-plus"></i>
               <span>Đăng ký </span>
             </a>
@@ -55,7 +55,7 @@
                 </div>
                 <div style="float:left;width:60%; text-align:center">
                   <div class="user-action">
-                    <a href="/dang-nhap.html">Đăng nhập</a> | <a href="/dang-ky.html">Đăng ký</a>
+                    <a href="">Đăng nhập</a> | <a href="">Đăng ký</a>
                   </div>
                 </div>
                 <div style="float:right;width:10%"></div>
@@ -125,7 +125,7 @@
           <div class="pull-left"></div>
           <div class="pull-right">
             <div class="user_welcome">
-              <a class="btn btn-login" href="/dangky" rel="nofollow">
+              <a class="btn btn-login" href="{{route('user/register')}}" rel="nofollow">
                 <i class="fa fa-user-plus"></i> Đăng ký </a>
               <button type="button" class="btn btn-login" data-toggle="modal" data-target="#pop-login">
                 <i class="fa fa-sign-in"></i> Đăng nhập </button>
@@ -165,19 +165,19 @@
                 <a href="/" rel="nofollow">Trang chủ</a>
               </li>
               <li class="menu-item-has-children">
-                <a href="/cho-thue-phong-tro" rel="nofollow">Cho thuê phòng trọ</a>
+                <a href="#" rel="nofollow">Cho thuê phòng trọ</a>
               </li>
               <li class="menu-item-has-children">
-                <a href="/cho-thue-can-ho" rel="nofollow">Cho thuê căn hộ</a>
+                <a href="" rel="nofollow">Cho thuê căn hộ</a>
               </li>
               <li class="menu-item-has-children">
-                <a href="/cho-thue-nha-nguyen-can" rel="nofollow">Nhà nguyên căn</a>
+                <a href="" rel="nofollow">Nhà nguyên căn</a>
               </li>
               <li class="menu-item-has-children">
-                <a href="/tim-nguoi-o-ghep" rel="nofollow">Tìm người ở ghép</a>
+                <a href="/tim-nguoi-o-ghe" rel="nofollow">Tìm người ở ghép</a>
               </li>
               <li class="menu-item-has-children">
-                <a href="/huong-dan.html" rel="nofollow">Hướng dẫn</a>
+                <a href="" rel="nofollow">Hướng dẫn</a>
               </li>
             </ul>
           </nav>
@@ -291,13 +291,15 @@
                 </div>
               </div>
             </div>
-            
+            {{$motels->links()}}
             <!-- content vip -->
             <div class="row">
               <div class="col-xs-12 col-md-3">
-                <h2 class="titleVip"> CHO THUÊ VIP </h2>
+                <h2 class="titleVip"> PHONG TRO NHIEU LUOT XEM NHAT</h2>
               </div>
             </div>
+            @if(count($motels_countview)>0)
+            @foreach($motels_countview as $view)
             <div class="panel panel-default post-list">
               <div class="panel-body">
                 <div class="list-all-new">
@@ -306,18 +308,18 @@
                       <div class="news-item item-vip2">
                         <div class="news-thumb">
                           <a href="">
-                            <img src="{{asset('photocreate/'.$row->images)}}" alt="" class="lazyload">
+                            <img src="{{asset('photocreate/'.$view->images)}}" alt="" class="lazyload">
                           </a>
                           <div class="icons">VIP</div>
                         </div>
                         <div class="news-info">
                           <h3 class="news-title">
-                            <a href="" title="Cho thuê phòng trọ Tôn Thất Thuyết Quận 4">Cho thuê phòng trọ tôn thất thuyết quận 4</a>
+                            <a href="{{url('motels/list/'.$view->id)}}" title="">{{$view->title}}</a>
                           </h3>
                           <div class="area mgt-5">
                             <span>
                               <i class="fa fa-area-chart"></i>
-                              <b>20 m&#178;</b>
+                              <b>Dien tich: {{$view->area}} m&#178;</b>
                             </span>
                             <span class="rating" style="color: #fc0">
                               <i class="fa fa-star"></i>
@@ -327,12 +329,28 @@
                             <span>
                               <i class="fa fa-map-marker"></i>
                               <b>
-                                <a href="/cho-thue-phong-tro-quan-4">Quận 4, Hồ Chí Minh</a>
+                                <a href="">Dia chi: {{$view->address}}</a>
                               </b>
                             </span>
                           </div>
+                          <div class="area mgt-5">
+                            <span>
+                              <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <b>
+                                  Ngay dang: {{$view->created_at}}
+                                </b>
+                            </span>
+                          </div>
+                          <div class="area mgt-5">
+                            <span>
+                              <i class="fa fa-eye" aria-hidden="true"></i>
+                                <b>
+                                  Luot xem: {{$view->count_view}}
+                                </b>
+                            </span>
+                          </div>
                           <div class="price mgt-5">
-                            <span>2.5 Triệu/tháng</span>
+                            <span>Gia thue: {{$view->price}} vnd/tháng</span>
                           </div>
                         </div>
                       </div>
@@ -341,6 +359,11 @@
                 </div>
               </div>
             </div>
+            @endforeach
+            @else
+                 <p class="text-center" style="color:red;">Khong co du lieu</p>
+            @endif
+            {{$motels_countview->links()}}
           </div>
           <div class="col-xs-12 col-md-4">
             <div class="sidebar-box">
@@ -390,6 +413,7 @@
         <i class="fa fa-angle-up"></i>
       </a>
     </footer>
+    <!-- phan hien thi prop khi click nut dang nhap tren trang chu -->
     <div class="modal" id="pop-login" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -401,31 +425,32 @@
           </div>
           <div class="modal-body">
             <div id="msg-login"></div>
-            <form action="/Account/LoginPop" id="frmLogin" method="post" role="form">
+            <form action="{{route('user/loginuserproses')}}" id="frmLogin" method="POST" enctype="mutilpart/form-data">
+              @csrf
               <div class="form-group">
-                <label class="control-label" for="Email">Tên đăng nhập / Email <span class="red_require">*</span>
+                <label class="control-label" for="email">Email <span class="red_require">*</span>
                 </label>
-                <input class="form-control" data-val="true" data-val-required="" name="Email" type="text" />
+                <input class="form-control" data-val="true" data-val-required="" name="email" type="text" />
               </div>
               <div class="form-group">
                 <label class="control-label" for="Password">Mật khẩu <span class="red_require">*</span>
                 </label>
-                <input class="form-control" data-val="true" data-val-required="" name="Password" type="password" />
+                <input class="form-control" data-val="true" data-val-required="" name="password" type="password" />
               </div>
               <div class="form-group clearfix">
                 <div class="pull-left">
                   <div class="checkbox-inline">
-                    <input data-val="true" data-val-required="" id="RememberMePop" name="RememberMe" type="checkbox" value="true" />
-                    <input name="RememberMe" type="hidden" value="false" />
+                    <input data-val="true" data-val-required="" id="RememberMePop" name="remember_token" type="checkbox" value="true" />
+                    <input name="remember_token" type="hidden" value="false" />
                     <label class="control-label" for="RememberMePop">Nhớ tài khoản</label>
                   </div>
                 </div>
                 <div class="pull-right">
-                  <a href="/quen-mat-khau.html" rel="nofollow">Quên mật khẩu?</a>
+                  <a href="" rel="nofollow">Quên mật khẩu?</a>
                 </div>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block" id="btnLogin">
+                <button type="submit" class="btn btn-success btn-block">
                   <i class="fa fa-sign-in"></i> Đăng nhập </button>
               </div>
             </form>
