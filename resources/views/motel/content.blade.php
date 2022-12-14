@@ -1,7 +1,7 @@
 @extends('user.home.index')
 @section('infocontent')
 <h1 class="post-title-lg title-lg-vip2">
-  tieu de test
+{{ $motels[0]->title }}
 </h1>
 <div class="page_content">
   <div class="row">
@@ -13,8 +13,18 @@
               <div class="post_summary clearfix">
                 <div class="summary_row clearfix">
                   <div class="post_summary_left fullwidth">
+                    <div class="summary_item_headline">Lượt xem:</div>
+                    <div class="summary_item_info"><!-- check view post -->
+                          @if (!empty($motels[0]->count_view))
+                               {{ $motels[0]->count_view }}
+                          @else
+                            0
+                          @endif
+                    </div>
+                  </div>
+                  <div class="post_summary_left fullwidth">
                     <div class="summary_item_headline">Địa chỉ:</div>
-                    <div class="summary_item_info">4/10/2 Lưu Chí Hiếu, Phường Tây Thạnh, Tân Phú - gần ĐH CNTP, gần Aeon Mall</div>
+                    <div class="summary_item_info">{{ $motels[0]->address}}</div>
                   </div>
                 </div>
                 <div class="summary_row clearfix">
@@ -28,27 +38,31 @@
                   </div>
                   <div class="post_summary_right">
                     <div class="summary_item_headline">Mã tin:</div>
-                    <div class="summary_item_info"> 169007 </div>
+                    <div class="summary_item_info"> {{ $motels[0]->id}} </div>
                   </div>
                 </div>
                 <div class="summary_row clearfix">
                   <div class="post_summary_left">
                     <div class="summary_item_headline">Giá cho thuê:</div>
-                    <div class="summary_item_info summary_item_info_price">2.5 Triệu/tháng</div>
+                    <div class="summary_item_info summary_item_info_price">{{ $motels[0]->price}} vnd/tháng</div>
                   </div>
                   <div class="post_summary_right">
                     <div class="summary_item_headline">Diện tích:</div>
-                    <div class="summary_item_info summary_item_info_price">25 m²</div>
+                    <div class="summary_item_info summary_item_info_price">{{ $motels[0]->area}} m²</div>
                   </div>
                 </div>
                 <div class="summary_row clearfix">
                   <div class="post_summary_left">
-                    <div class="summary_item_headline">Liên hệ:</div>
-                    <div class="summary_item_info">quản lý</div>
+                    <div class="summary_item_headline">Liên hệ: </div>
+                    <div class="summary_item_info">quan ly</div>
+                  </div>
+                  <div class="post_summary_right">
+                    <div class="summary_item_headline">Ngày đăng:</div>
+                    <div class="summary_item_info">{{ $motels[0]->created_at}}</div>
                   </div>
                   <div class="post_summary_right">
                     <div class="summary_item_headline">Ngày cập nhật:</div>
-                    <div class="summary_item_info">12/12/2022 16:36</div>
+                    <div class="summary_item_info">{{ $motels[0]->updated_at}}</div>
                   </div>
                 </div>
                 <div class="summary_row">
@@ -57,14 +71,14 @@
                     <div class="summary_item_info summary_item_info_phone">
                       <a href="tel:" class="js-get-phone" data-phone="">
                         <i class="fa fa-phone" aria-hidden="true"></i>
-                        <span></span>
+                        <span>{{$motels[0]->phone}}</span>
                       </a>
                     </div>
                   </div>
-                  <div class="post_summary_right">
+                  <!-- <div class="post_summary_right">
                     <div class="summary_item_headline">Ngày hết hạn:</div>
                     <div class="summary_item_info">19/12/2022 16:36</div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -73,10 +87,7 @@
         <div class="block-content" id="_motachitiet">
           <div class="post_summary_wrapper">
             <div class="post_summary-content">
-              <span class="block_headline">Thông tin chi tiết</span> - CHO THUÊ PHÒNG CAO CẤP FULL NỘI THẤT RẤT ĐẸP <br>- Nhà mới xây lại rất mới rất đẹp, nội thất mới tinh như hình. <br>- PHÒNG CÓ NỘI THẤT: Máy Lạnh, giường, nệm, tủ áo,.....máy giặt. <br>-----&gt; GIÁ PHÒNG-----&gt; <br>+ PHÒNG: 2.5tr - 2.9tr - (Full Nội Thất) <br>+ PHÒNG: 3 tr - 3.5tr/tháng - (Full Nội Thất - rộng 25 -28m2) <br>+ PHÒNG: 3.6tr - 4 tr/tháng - (CÓ BAN CÔNG, Full Nội Thất - rộng 30-45m2) <br>+ CĂN HỘ LỚN 60m2 giá: 5 tr (Full Nội Thất, Phòng ngủ, phòng bếp....rất rộng đẹp) <br>------------------- <br>- Đặc điểm: <br>- Vị trí gần Trường ĐH Công nghiệp Thực Phẩm, đi siêu thị AEON MALL Tân Phú 5 phút, công viên Sơn Kỳ, gần các đường như: Lê Trọng Tấn, Tân Kỳ Tân Qúy,.... <br>+ Phòng rất rộng từ 25m2 - 40m2, có cả căn hộ lớn 60m2 <br>+ PHÒNG NÀO CŨNG CÓ NỘI THẤT: Máy Lạnh, giường, nệm, tủ áo,.....máy giặt. <br>+ Các phòng đều có cửa sổ, hoặc ban công ra trời. <br>+ Giờ giấc tự do, về lúc nào cũng được. <br>+ Có nhà xe rộng rãi, ĐẶT BIỆT KHÔNG THU PHÍ XE <br>+ Riêng biệt, Không chung chủ <br>+ Wifi mạnh, sân phơi đồ rộng rãi <br>+ Cửa ra vào mở bằng vân tay, nhà xe có camera chống trộm. <br>+ Khu vực gần chợ trung tâm, siêu thị AEON Mall, bách hóa xanh, các Trường Đại Học..... <br>-------------- <br>- XEM PHÒNG HÃY GỌI: ----&gt; 0902.650.854 <br>- Địa chỉ: 4/10/2 Lưu Chí Hiếu, quận Tân Phú <p>----------------------------------------------</p>
-              <p>☎️ Điện thoại liên hệ: <strong style="color: red;"></strong>
-              </p>
-            </div>
+            {{$motels[0]->description}}
           </div>
         </div>
         <div class="alert alert-warning post_report mgt-15">
