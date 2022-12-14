@@ -8,12 +8,26 @@
     <div class="container">
       <div class="card">
         <div class="card-body">
+            @if ($message = Session::get('Thongbao'))
+            <div class="alert alert-success" role="alert">
+                {{ $message }}
+            </div>
+            @endif 
           <div class="row">
-              <form action="{{route('admin/home/store')}}" method="post" enctye="mutilpart/form-data">
+          @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+          </div>
+          @endif
+              <form action="{{route('admin/home/store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="Title" class="form-label">Tieu de</label>
-                    <input type="text" name="title" class="form-control" id="" placeholder="Nhap tieu de">
+                    <input type="text" name="title" class="form-control" placeholder="Nhap tieu de">
                 </div>
                 <div class="mb-3">
                     <label for="images" class="form-label">Hinh anh</label>
@@ -29,7 +43,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Gia phong</label>
-                    <input type="text" name="price" class="form-control" id="" placeholder="Nhap gia phong">
+                    <input type="text" name="price" class="form-control" id="" class="@error('title') is-invalid @enderror" placeholder="Nhap gia phong">
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Dia chi</label>

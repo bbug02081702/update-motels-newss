@@ -7,39 +7,32 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-              <form action="{{route('admin/home/update', $motels->id)}}" method="post" enctye="mutilpart/form-data">
+              <form action="{{route('admin/home/updatemanageruser',$rowuser->id)}}" method="post" enctye="mutilpart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="Title" class="form-label">Tieu de</label>
-                    <input type="text" name="title" value="{{$motels->title}}" class="form-control" id="">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" value="{{$rowuser->username}}" class="form-control" id="" placeholder="Nhap username">
                 </div>
                 <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh muc</label>
-                    <input type="number" name="category_id" value="{{$motels->category_id}}" class="form-control" id="">
+                    <label for="avatar" class="form-label">Avatar</label>
+                    <input type="file" name="avatar"  value="{{$rowuser->avatar}}" class="form-control" id="">
                 </div>
                 <div class="mb-3">
-                    <label for="area" class="form-label">Dien tich</label>
-                    <input type="number" name="area" value="{{$motels->area}}" class="form-control" id="">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="number" name="email" value="{{$rowuser->email}}" class="form-control" id="" placeholder="Nhap email">
                 </div>
                 <div class="mb-3">
-                    <label for="price" class="form-label">Gia phong</label>
-                    <input type="text" name="price" value="{{$motels->price}}" class="form-control" id="">
-                </div> <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh muc</label>
-                    <input type="number" name="category_id" value="{{$motels->category_id}}" class="form-control" id="">
+                    <label for="role" class="form-label">Quyen</label>
+                    <input type="number" name="role" value="{{$rowuser->role}}" class="form-control" id="" placeholder="Nhap quyen">
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label">Dia chi</label>
-                    <input type="text" name="address" value="{{$motels->address}}" class="form-control" id="">
-                </div>
-                <div class="mb-3">
-                    <label for="approve" class="form-label">Trang thai</label>
-                    <input type="text" name="approve" value="{{$motels->approve}}" class="form-control" id="">
+                    <label for="created_at" class="form-label">Ngay tao</label>
+                    <input type="date" name="created_at"  value="{{$rowuser->created_at}}" class="form-control" id="">
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Dong y</button>
                
-                <a href="{{route('admin/home')}}" type="button" class="btn btn-success">Tro ve</a>
+                <a href="{{route('admin/home/manageruser')}}" type="button" class="btn btn-success">Tro ve</a>
               </form>
           </div>
         </div>

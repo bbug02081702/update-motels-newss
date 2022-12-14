@@ -28,7 +28,7 @@ class MotelsController extends Controller
         $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('address', 'LIKE', '%'.$address.'%')->get();
      }
 
-       return view('user.home.index', compact('motels', 'motels_countview'));
+       return view('user.home.content.container', compact('motels', 'motels_countview'));
     }
 
 
@@ -39,7 +39,7 @@ class MotelsController extends Controller
         Motels::where('id',$post->id)->update($update);
 
         $motels = DB::table('motels')->where('id',$id)->get();
-        return view('motel.index',compact('motels'));
+        return view('motel.content',compact('motels'));
     }
 
 //------------------------------ADMIN--------------------------------------//
@@ -63,16 +63,17 @@ class MotelsController extends Controller
     public function store(Request $request){
         $this->validate($request,[
             'title' => 'required',
+            'images' => 'required',
+            'price' => 'required',
             
         ]);
-        if($request->hasFile('images')){
-             $file = $request->images;
-             $filename =  date('Y-m-d-H:i:s')."-".$file->getClientOriginalExtension();
-             Image::make($image->getRealPath())->resize(468, 249)->save('public/img/products/'.$filename);
-             $product->image = 'img/products/'.$filename;
-             $product->save();
-        }
         $motels = Motels::create($request->all());
+        if($request->hasFile('images')){
+            $request->file('images')->move('fotopegawai/', $request->file('images')->getClientOriginalName());
+            $motels->images = $request->file('images')->getClientOriginalName();
+            $motels->save();
+        }
+        
         return redirect()->route('admin/home')->with('Thongbao', 'Them danh sach phong tro thanh cong');
     }
 

@@ -13,7 +13,7 @@
      </i>
     </button>
     </form>
-      <a href="" type="button" class="btn btn-success">Them</a>
+      <a href="{{route('admin/home/addmanageruser')}}" type="button" class="btn btn-success">Them</a>
       <div class="card">
         <div class="card-body">
           <div class="row">
@@ -22,7 +22,6 @@
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Avatar</th>
-                  <th scope="col">Ho va ten</th>
                   <th scope="col">User name</th>
                   <th scope="col">Email</th>
                   <th scope="col">Quyen</th>
@@ -39,12 +38,11 @@
                 <tr>
                   <th scope="row">{{$index + $users->firstItem()}}</th>
                   <td>
-                  <img src="{{asset('photocreate/'.$rowuser->avatar)}}" style="width: 50px; height: 50px; border-radius:50%;" alt="">
+                  <img src="{{asset('photouser/'.$rowuser->avatar)}}" style="width: 50px; height: 50px; border-radius:50%;" alt="">
                   </td>
-                  <td>{{$rowuser->name}}</td>
                   <td>{{$rowuser->username}}</td>
                   <td>{{$rowuser->email}}</td>
-                  @if($rowuser->role == 1)
+                  @if($rowuser->role == 0)
                   <td><span class="badge bg-info">{{$rowuser->role}} admin</span></td>
                   @else
                   <td><span class="badge bg-warning">{{$rowuser->role}} user</span></td>
@@ -58,7 +56,7 @@
               @endforeach
               @else
                 <tr>
-                  <td colspan="8" class="text-center">Ko tim thay du lieu!!! Vui long thuc hien them du lieu!!!</td>
+                  <td colspan="7" class="text-center">Ko tim thay du lieu!!! Vui long thuc hien them du lieu!!!</td>
                 </tr>
               @endif
               </tbody>

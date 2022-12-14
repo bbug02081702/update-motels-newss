@@ -17,6 +17,11 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
+            @if ($message = Session::get('Thongbao'))
+            <div class="alert alert-success" role="alert">
+                {{ $message }}
+            </div>
+            @endif 
             <table class="table">
               <thead>
                 <tr>
@@ -41,7 +46,7 @@
                   <th scope="row">{{$index + $motels->firstItem()}}</th>
                   <td><a href="{{url('/motels/list/'.$row->id)}}">{{$row->title}}</a></td>
                   <td>
-                  <img src="{{asset('img/products/'.$row->images)}}" style="width: 56px;" alt="">
+                    <img src="{{asset('fotopegawai/'.$row->images)}}" style="width:48px;" alt="">
                   </td>
                   <td>{{$row->category_id}}</td>
                   <td>{{$row->area}} m&#178</td>

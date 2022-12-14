@@ -125,10 +125,35 @@
           <div class="pull-left"></div>
           <div class="pull-right">
             <div class="user_welcome">
-              <a class="btn btn-login" href="{{route('user/register')}}" rel="nofollow">
-                <i class="fa fa-user-plus"></i> Đăng ký </a>
-              <button type="button" class="btn btn-login" data-toggle="modal" data-target="#pop-login">
-                <i class="fa fa-sign-in"></i> Đăng nhập </button>
+              <div class="welcome_user_text">Xin chào, <strong>
+                  <a rel="nofollow" href="#" class="text-blue">test</a>
+              </div>
+              <div class="dropdown user_welcome_dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Quản lý tài khoản <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <li>Mã tài khoản: <strong>113221</strong>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <a rel="nofollow" href="/dang-tin.html" title="Đăng tin">
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i> Đăng tin </a>
+                  </li>
+                  <li>
+                    <a rel="nofollow" href="/quan-ly-tin.html" title="Quản lý tin">
+                      <i class="fa fa-list-alt" aria-hidden="true"></i> Quản lý tin đăng </a>
+                  </li>
+                  <li>
+                    <a rel="nofollow" href="/tai-khoan.html">
+                      <i class="fa fa-user" aria-hidden="true"></i> Thông tin tài khoản </a>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <a rel="nofollow" href="/thoat.html" title="Thoát">
+                      <i class="fa fa-sign-out" aria-hidden="true"></i> Thoát </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -191,39 +216,137 @@
             <h3 class="title">Tìm kiếm nhanh</h3>
             <div class="bs-content">
               <div class="row">
-                  <form action="" method="GET">
-                    @csrf
-                    <div class="row filter-row">
-                        <div class="col-sm-6 col-md-3">  
-                            <div class="form-group form-focus">
-                                <input type="text" placeholder="Tim kiem theo tieu de" class="form-control floating" name="title">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">  
-                            <div class="form-group form-focus">
-                                <input type="text" placeholder="Tim kiem theo gia" class="form-control floating" name="price">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3"> 
-                            <div class="form-group form-focus">
-                                <input type="text" placeholder="Tim kiem theo vi tri" class="form-control floating" name="address">
-                            </div>
-                        </div>
-                        <div class="bs-search">  
-                        <button type="sumit" class="btn btn-warning btn-block"><i class="fa fa-search"></i> Search </button>  
-                        </div>
+                <form action="" method="GET"> @csrf <div class="row filter-row">
+                    <div class="col-sm-6 col-md-3">
+                      <div class="form-group form-focus">
+                        <input type="text" placeholder="Tim kiem theo tieu de" class="form-control floating" name="title">
+                      </div>
                     </div>
-                  </form>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="form-group form-focus">
+                        <input type="text" placeholder="Tim kiem theo gia" class="form-control floating" name="price">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="form-group form-focus">
+                        <input type="text" placeholder="Tim kiem theo vi tri" class="form-control floating" name="address">
+                      </div>
+                    </div>
+                    <div class="bs-search">
+                      <button type="sumit" class="btn btn-warning btn-block">
+                        <i class="fa fa-search"></i> Search </button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="access_page">
-        <!-- phan hien thi -->
-        @yield('infocontainer')
-        @yield('infocontent')
-        @yield('infoaccount')
+        <div class="row">
+          <div class="col-xs-12 col-md-8 pdr-0">
+            <h2 class="titleNew"> CHO THUÊ MỚI NHẤT </h2>
+            <div class="panel panel-default post-list">
+              <div class="panel-body">
+                <div class="list-all-new">motels
+                  <div class="row" style="margin-top:-15px"> 
+                  <div class="col-xs-12 col-md-6">
+                      <div class="news-item item-vip5">
+                        <div class="news-thumb">
+                          <a href="#">
+                            <img src="" style="width: 40px;" alt="" class="lazyload">
+                          </a>
+                        </div>
+                        <div class="news-info">
+                          <h4 class="news-title text-lc">
+                            <a href="" title=""></a>
+                          </h4>
+                          <div class="room-detail">
+                            <div class="localtion">
+                              <div class="clearfix">
+                                <span>
+                                  <i class="fa fa-area-chart"></i>
+                                  <b>Dien tich: m&#178;</b>
+                                </span>
+                              </div>
+                              <div class="clearfix">
+                                <span>
+                                  <i class="fa fa-map-marker"></i>
+                                  <b>
+                                    <a href=""> Dia chi: </a>
+                                  </b>
+                                </span>
+                              </div>
+                              <div class="clearfix">
+                                <span>
+                                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                  <b> Ngay dang: 
+                                  </b>
+                                </span>
+                              </div>
+                              <div class="clearfix">
+                                <span>
+                                  <i class="fa fa-eye" aria-hidden="true"></i>
+                                  <b> Luot xem: 
+                                  </b>
+                                </span>
+                              </div>
+                              <div class="mgt-5 clearfix">
+                                <span class="price">
+                                  <i class="fa fa-money" aria-hidden="true"></i>
+                                  <b>Gia thue:  vnd/tháng</b>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- content vip -->
+          
+           
+          </div>
+          <div class="col-xs-12 col-md-4">
+            <div class="sidebar-box">
+              <h3 class="sidebarbox-title">
+                <span>Danh mục cho thuê</span>
+              </h3>
+              <div class="sidebarbox-body">
+                <ul class="box-lastnews">
+                  <li>
+                    <a title="Cho thuê phòng trọ thanh pho vinh" href="/cho-thue-phong-tro-ho-chi-minh">Cho thuê phòng trọ thanh pho vinh</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="mgb-15">
+              <img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+B8AAucB8kTMRj8AAAAASUVORK5CYII=" data-src="/images/ads/ad-right.jpg?v=20200501" alt="" class="lazyload">
+            </div>
+            <div class="sidebar-box">
+              <h3 class="sidebarbox-title">
+                <span>Tin tức mới</span>
+              </h3>
+              <ul class="list_news_recent">
+                <li class="news_item clearfix">
+                  <a href="/tin-tuc/nha-thue-tp.hcm-giam-gia-2-3-trieu-dong-thang-p28131.html">
+                    <div class="news_thumb">
+                      <img class="lazyload" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8+B8AAucB8kTMRj8AAAAASUVORK5CYII=" data-src="https://img.thuephongtro.com/images/uploads/20200531080439-2fupv.jpg" data-loaded="true">
+                    </div>
+                    <div class="news_info">
+                      <div class="news_item_title">Nhà thuê TP.HCM giảm giá 2-3 triệu đồng/tháng</div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <footer class="page-footer">
@@ -249,9 +372,7 @@
           </div>
           <div class="modal-body">
             <div id="msg-login"></div>
-            <form action="{{route('user/loginuserproses')}}" id="frmLogin" method="POST" enctype="mutilpart/form-data">
-              @csrf
-              <div class="form-group">
+            <form action="{{route('user/loginuserproses')}}" id="frmLogin" method="POST" enctype="mutilpart/form-data"> @csrf <div class="form-group">
                 <label class="control-label" for="email">Email <span class="red_require">*</span>
                 </label>
                 <input class="form-control" data-val="true" data-val-required="" name="email" type="text" />
@@ -292,8 +413,8 @@
     <script src="/scripts/jqueryval.min.js"></script>
     <script src="/scripts/lazyload.min.js"></script>
     <script src="/scripts/main.min.js></script>
-    <script src="/scripts/common.min.js></script>
+    <script src=" /scripts/common.min.js></script>
     <script src="/scripts/account.min.js></script>
-    <script src=" /scripts/data.min.js"></script>
+	<script src=" /scripts/data.min.js"></script>
   </body>
 </html>

@@ -4,45 +4,54 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <body>
-    <h1 class="text-center"> Them danh sach phong tro</h1>
+    <h1 class="text-center"> Them danh sach nguoi dung</h1>
     <div class="container">
       <div class="card">
         <div class="card-body">
+            @if ($message = Session::get('Thongbao'))
+            <div class="alert alert-success" role="alert">
+                {{ $message }}
+            </div>
+            @endif 
           <div class="row">
-              <form action="{{route('admin/home/store')}}" method="post" enctye="mutilpart/form-data">
+          @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+          </div>
+          @endif
+              <form action="{{route('admin/home/storemanageruser')}}" method="post" enctye="mutilpart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="Title" class="form-label">Tieu de</label>
-                    <input type="text" name="title" class="form-control" id="" placeholder="Nhap tieu de">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="" placeholder="Nhap username">
                 </div>
                 <div class="mb-3">
-                    <label for="images" class="form-label">Hinh anh</label>
-                    <input type="file" name="images" class="form-control" id="">
+                    <label for="avatar" class="form-label">Avatar</label>
+                    <input type="file" name="avatar" class="form-control" id="">
                 </div>
                 <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh muc</label>
-                    <input type="number" name="category_id" class="form-control" id="" placeholder="Nhap danh muc">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" name="email" class="form-control" id="" placeholder="Nhap email">
                 </div>
                 <div class="mb-3">
-                    <label for="area" class="form-label">Dien tich</label>
-                    <input type="number" name="area" class="form-control" id="" placeholder="Nhap dien tich">
+                    <label for="password" class="form-label">Mat khau</label>
+                    <input type="password" name="email" class="form-control" id="" placeholder="Nhap mat khau">
                 </div>
                 <div class="mb-3">
-                    <label for="price" class="form-label">Gia phong</label>
-                    <input type="text" name="price" class="form-control" id="" placeholder="Nhap gia phong">
+                    <label for="role" class="form-label">Quyen</label>
+                    <input type="number" name="role" class="form-control" id="" placeholder="Nhap quyen">
                 </div>
                 <div class="mb-3">
-                    <label for="address" class="form-label">Dia chi</label>
-                    <input type="text" name="address" class="form-control" id="" placeholder="Nhap dia chi">
+                    <label for="created_at" class="form-label">Ngay tao</label>
+                    <input type="date" name="created_at" class="form-control" id="">
                 </div>
-                <div class="mb-3">
-                    <label for="approve" class="form-label">Trang thai</label>
-                    <input type="text" name="approve" class="form-control" id="" placeholder="Nhap trang thai">
-                </div>
-               
                 <button type="submit" class="btn btn-primary">Dong y</button>
                
-                <a href="{{route('admin/home')}}" type="button" class="btn btn-success">Tro ve</a>
+                <a href="{{route('admin/home/manageruser')}}" type="button" class="btn btn-success">Tro ve</a>
               </form>
           </div>
         </div>

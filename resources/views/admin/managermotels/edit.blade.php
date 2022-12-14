@@ -7,6 +7,20 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
+            @if ($message = Session::get('Thongbao'))
+            <div class="alert alert-success" role="alert">
+                {{ $message }}
+            </div>
+            @endif 
+            @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+          </div>
+          @endif
               <form action="{{route('admin/home/update', $motels->id)}}" method="post" enctye="mutilpart/form-data">
                 @csrf
                 <div class="mb-3">
@@ -14,8 +28,8 @@
                     <input type="text" name="title" value="{{$motels->title}}" class="form-control" id="">
                 </div>
                 <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh muc</label>
-                    <input type="number" name="category_id" value="{{$motels->category_id}}" class="form-control" id="">
+                    <label for="images" class="form-label">Hinh anh</label>
+                    <input type="file" name="images" value="{{$motels->images}}" class="form-control" id="">
                 </div>
                 <div class="mb-3">
                     <label for="area" class="form-label">Dien tich</label>

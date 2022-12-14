@@ -45,6 +45,21 @@ Route::controller(MotelsController::class)->group(function(){
 Route::controller(UserController::class)->group(function(){
     //------------------------------------ADMIN-USER----------------------------//
    Route::get('admin/home/manageruser', 'indexUserManager')->name('admin/home/manageruser');
+
+   // xu ly hien thi danh sach ban ghi tu bang users
+   Route::get('admin/home/addmanageruser', 'createUserManager')->name('admin/home/addmanageruser'); //hien thi form them user
+   Route::post('admin/home/storemanageruser','storeUserManager')->name('admin/home/storemanageruser'); //xu ly them user tu form
+
+   Route::get('admin/home/editmanageruser/{id}', 'editUserManager')->name('admin/home/editmanageruser'); //hien thi form sua user
+   Route::post('admin/home/updatemanageruser/{id}', 'updateUserManager')->name('admin/home/updatemanageruser'); // xu ly sua user tu form
+
+   Route::get('admin/home/deletemanageruser/{id}', 'destroyUserManager')->name('admin/home/deletenageruser'); // xu ly xoa user
+
+
+   //----------------------------------------------USER-ACCOUNT--------------------------------//
+   Route::get('user/home', 'homeUser')->name('user/home'); 
+   //test url info
+
 });
 
 
