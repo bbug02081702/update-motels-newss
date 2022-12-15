@@ -1,4 +1,40 @@
 @extends('user.home.index')
+@section('infosearch')
+<div class="searchbar_top hidden-xs">
+        <div class="searchbar_top_body">
+          <div class="box-search">
+            <h3 class="title">Tìm kiếm nhanh</h3>
+            <div class="bs-content">
+              <div class="row">
+                  <form action="" method="GET" enctype="mutilpart/form-data">
+                    @csrf
+                    <div class="row filter-row">
+                        <div class="col-sm-6 col-md-3">  
+                            <div class="form-group form-focus">
+                                <input type="text" placeholder="Tim kiem theo tieu de" class="form-control floating" name="title">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">  
+                            <div class="form-group form-focus">
+                                <input type="text" placeholder="Tim kiem theo gia" class="form-control floating" name="price">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3"> 
+                            <div class="form-group form-focus">
+                                <input type="text" placeholder="Tim kiem theo vi tri" class="form-control floating" name="address">
+                            </div>
+                        </div>
+                        <div class="bs-search">  
+                        <button type="sumit" class="btn btn-warning btn-block"><i class="fa fa-search"></i> Search </button>  
+                        </div>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+@endsection
 @section('infocontainer')
 <div class="row">
           <div class="col-xs-12 col-md-8 pdr-0">

@@ -15,17 +15,17 @@ class MotelsController extends Controller
        
     // xu ly tim kiem theo tieu de cho trang chu user
     if($title = request()->title){
-      $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('title', 'LIKE', '%'.$title.'%')->get();
+      $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('title', 'LIKE', '%'.$title.'%')->paginate(2);
     }
 
     //xu ly tim kiem theo gia cho trang chu
     if($price = request()->price){
-        $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('price', 'LIKE', '%'.$price.'%')->get();
+        $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('price', 'LIKE', '%'.$price.'%')->paginate(2);
     }
 
      // xu ly tim kiem theo vi tri cho trang chu user
      if($address = request()->address){
-        $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('address', 'LIKE', '%'.$address.'%')->get();
+        $motels = DB::table('motels')->orderBy('created_at', 'DESC')->where('address', 'LIKE', '%'.$address.'%')->paginate(2);
      }
 
        return view('user.home.content.container', compact('motels', 'motels_countview'));

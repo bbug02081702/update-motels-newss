@@ -185,40 +185,7 @@
       </div>
     </header>
     <div class="container">
-      <div class="searchbar_top hidden-xs">
-        <div class="searchbar_top_body">
-          <div class="box-search">
-            <h3 class="title">Tìm kiếm nhanh</h3>
-            <div class="bs-content">
-              <div class="row">
-                  <form action="" method="GET">
-                    @csrf
-                    <div class="row filter-row">
-                        <div class="col-sm-6 col-md-3">  
-                            <div class="form-group form-focus">
-                                <input type="text" placeholder="Tim kiem theo tieu de" class="form-control floating" name="title">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">  
-                            <div class="form-group form-focus">
-                                <input type="text" placeholder="Tim kiem theo gia" class="form-control floating" name="price">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3"> 
-                            <div class="form-group form-focus">
-                                <input type="text" placeholder="Tim kiem theo vi tri" class="form-control floating" name="address">
-                            </div>
-                        </div>
-                        <div class="bs-search">  
-                        <button type="sumit" class="btn btn-warning btn-block"><i class="fa fa-search"></i> Search </button>  
-                        </div>
-                    </div>
-                  </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        @yield('infosearch')
       <div class="access_page">
         <!-- phan hien thi -->
         @yield('infocontainer')
