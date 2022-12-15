@@ -6,7 +6,7 @@
     <div class="container">
     <form action="" class="form-inline" method="get">
     <div class="form-group">
-        <input name="key" class="form-control" id="" placeholder="Tim kiem theo tieu de">
+        <input name="key" class="form-control" id="" placeholder="Tim kiem theo username">
     </div>
     <button type="submit" class="btn btn-primary">
      <i class="fas fa-search">
@@ -17,6 +17,11 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
+            @if ($message = Session::get('Thongbao'))
+            <div class="alert alert-success" role="alert">
+                {{ $message }}
+            </div>
+            @endif 
             <table class="table">
               <thead>
                 <tr>
@@ -38,7 +43,7 @@
                 <tr>
                   <th scope="row">{{$index + $users->firstItem()}}</th>
                   <td>
-                  <img src="{{asset('photouser/'.$rowuser->avatar)}}" style="width: 50px; height: 50px; border-radius:50%;" alt="">
+                  <img src="{{asset('fotopegawai/'.$rowuser->avatar)}}" style="width:48px; height:48px; border-radius: 50%" alt="">
                   </td>
                   <td>{{$rowuser->username}}</td>
                   <td>{{$rowuser->email}}</td>
@@ -49,8 +54,8 @@
                   @endif
                   <td>{{$rowuser->created_at}}</td>
                   <td>
-                  <a href="" type="button" class="btn btn-info">Sua</a>
-                  <a href="" type="button" class="btn btn-danger">Xoa</a>
+                  <a href="{{route('admin/home/editmanageruser', $rowuser->id)}}" type="button" class="btn btn-info">Sua</a>
+                  <a href="{{route('admin/home/deletenageruser', $rowuser->id)}}" type="button" class="btn btn-danger">Xoa</a>
                   </td>
                 </tr>
               @endforeach

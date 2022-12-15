@@ -71,7 +71,7 @@
                 </div>
               </div>
             </div>
-            {{$motels->links()}}
+            {{$motels->appends(request()->all())->links()}}
             <!-- content vip -->
             <div class="row">
               <div class="col-xs-12">
@@ -143,7 +143,7 @@
                 </div>
               </div>
             </div>
-            {{$motels_countview->links()}}
+            {{$motels_countview->appends(request()->all())->links()}}
           </div>
           <div class="col-xs-12 col-md-4">
             <div class="sidebar-box">

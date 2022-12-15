@@ -34,16 +34,16 @@ class UserController extends Controller
         ]);
         $users = User::create($request->all());
         if($request->hasFile('avatar')){
-            $request->file('avatar')->move('photouser/', $request->file('avatar')->getClientOriginalName());
+            $request->file('avatar')->move('fotopegawai/', $request->file('avatar')->getClientOriginalName());
             $users->avatar = $request->file('avatar')->getClientOriginalName();
             $users->save();
-        }
+         }
         return redirect()->route('admin/home/manageruser')->with('Thongbao', 'Them danh sach user thanh cong');
     }
 
     // hien thi giao dien sua danh sach phong tro 
     public function editUserManager($id){
-        $users = Users::find($id);
+        $users = User::find($id);
         return view('admin.managerusermotels.edit',compact('users'));
     }
 

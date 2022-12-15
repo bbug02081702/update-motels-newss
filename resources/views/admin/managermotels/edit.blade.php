@@ -21,7 +21,7 @@
             </ul>
           </div>
           @endif
-              <form action="{{route('admin/home/update', $motels->id)}}" method="post" enctye="mutilpart/form-data">
+              <form action="{{route('admin/home/update', $motels->id)}}" method="post" enctype="mutilpart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="Title" class="form-label">Tieu de</label>

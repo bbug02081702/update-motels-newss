@@ -23,7 +23,7 @@
             </ul>
           </div>
           @endif
-              <form action="{{route('admin/home/storemanageruser')}}" method="post" enctye="mutilpart/form-data">
+              <form action="{{route('admin/home/storemanageruser')}}" method="POST" enctype="mutilpart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="avatar" class="form-label">Avatar</label>
-                    <input type="file" name="avatar" class="form-control" id="">
+                    <input type="file" name="avatar" id="avatar" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>

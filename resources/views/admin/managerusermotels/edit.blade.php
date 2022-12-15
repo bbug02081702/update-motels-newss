@@ -7,27 +7,27 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-              <form action="{{route('admin/home/updatemanageruser',$rowuser->id)}}" method="post" enctye="mutilpart/form-data">
+              <form action="{{route('admin/home/updatemanageruser', $users->id)}}" method="POST" enctype="mutilpart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" name="username" value="{{$rowuser->username}}" class="form-control" id="" placeholder="Nhap username">
+                    <input type="text" name="username" value="{{$users->username}}" class="form-control" id="" placeholder="Nhap username">
                 </div>
                 <div class="mb-3">
                     <label for="avatar" class="form-label">Avatar</label>
-                    <input type="file" name="avatar"  value="{{$rowuser->avatar}}" class="form-control" id="">
+                    <input type="file" name="avatar" value="{{$users->avatar}}" class="form-control" id="">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="number" name="email" value="{{$rowuser->email}}" class="form-control" id="" placeholder="Nhap email">
+                    <input type="number" name="email" value="{{$users->email}}" class="form-control" id="" placeholder="Nhap email">
                 </div>
                 <div class="mb-3">
                     <label for="role" class="form-label">Quyen</label>
-                    <input type="number" name="role" value="{{$rowuser->role}}" class="form-control" id="" placeholder="Nhap quyen">
+                    <input type="number" name="role" value="{{$users->role}}" class="form-control" id="" placeholder="Nhap quyen">
                 </div>
                 <div class="mb-3">
                     <label for="created_at" class="form-label">Ngay tao</label>
-                    <input type="date" name="created_at"  value="{{$rowuser->created_at}}" class="form-control" id="">
+                    <input type="date" name="created_at"  value="{{$users->created_at}}" class="form-control" id="">
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Dong y</button>
