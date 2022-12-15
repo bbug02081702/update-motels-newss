@@ -13,7 +13,7 @@
                       <div class="news-item item-vip5">
                         <div class="news-thumb">
                           <a href="#">
-                            <img src="{{asset('fotopegawai/'.$row->images)}}" style="width: 40px;" alt="" class="lazyload">
+                            <img src="{{asset('fotopegawai/'.$row->images)}}" alt="" class="lazyload">
                           </a>
                         </div>
                         <div class="news-info">
@@ -74,16 +74,16 @@
             {{$motels->links()}}
             <!-- content vip -->
             <div class="row">
-              <div class="col-xs-12 col-md-3">
+              <div class="col-xs-12">
                 <h2 class="titleVip"> PHONG TRO NHIEU LUOT XEM NHAT</h2>
               </div>
             </div>
-            @if(count($motels_countview)>0)
-            @foreach($motels_countview as $view)
             <div class="panel panel-default post-list">
               <div class="panel-body">
                 <div class="list-all-new">
                   <div class="row" style="margin-top:-15px">
+                  @if(count($motels_countview)>0)
+                  @foreach($motels_countview as $view)
                     <div class="col-xs-12 col-md-6">
                       <div class="news-item item-vip2">
                         <div class="news-thumb">
@@ -135,14 +135,14 @@
                         </div>
                       </div>
                     </div>
+                    @endforeach
+                   @else
+                 <p class="text-center" style="color:red;">Khong co du lieu</p>
+                   @endif
                   </div>
                 </div>
               </div>
             </div>
-            @endforeach
-            @else
-                 <p class="text-center" style="color:red;">Khong co du lieu</p>
-            @endif
             {{$motels_countview->links()}}
           </div>
           <div class="col-xs-12 col-md-4">
