@@ -1,19 +1,19 @@
 @extends('admin.home.index')
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    @section('content')
-    <h1 class="text-center"> Quan ly danh sach nguoi dung</h1>
+    @section('category')
+    <h1 class="text-center"> Quan ly danh muc phong tro</h1>
     <div class="container">
     <form action="" class="form-inline" method="get">
     <div class="form-group">
-        <input name="key" class="form-control" id="" placeholder="Tim kiem theo username">
+        <input name="category" class="form-control" id="" placeholder="Tim kiem theo ten danh muc">
     </div>
     <button type="submit" class="btn btn-primary">
      <i class="fas fa-search">
      </i>
     </button>
     </form>
-      <a href="{{route('admin/home/addmanageruser')}}" type="button" class="btn btn-success">Them</a>
+      <a href="{{route('admin/home/category/add')}}" type="button" class="btn btn-success">Them</a>
       <div class="card">
         <div class="card-body">
           <div class="row">
@@ -26,10 +26,8 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Avatar</th>
-                  <th scope="col">User name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Quyen</th>
+                  <th scope="col">Tieu de</th>
+                  <th scope="col">Danh muc</th>
                   <th scope="col">Ngay tao</th>
                   <th scope="col">Hanh dong</th>
                 </tr>
@@ -38,35 +36,27 @@
                 @php
                  $no = 1;
                 @endphp
-              @if(count($users) > 0)
-              @foreach($users as $index => $rowuser)
+              @if(count($category) > 0)
+              @foreach($category as $index => $rowcategory)
                 <tr>
-                  <th scope="row">{{$index + $users->firstItem()}}</th>
+                  <th scope="row">{{$index + $category->firstItem()}}</th>
+                  <td><a href="{{url('/motels/list/'.$rowcategory->id)}}">{{$rowcategory->title}}</a></td>
+                  <td>{{$rowcategory->category_id}}</td>
+                  <td>{{$rowcategory->created_at}}</td>
                   <td>
-                  <img src="{{asset('fotopegawai/'.$rowuser->avatar)}}" style="width:48px; height:48px; border-radius: 50%" alt="">
-                  </td>
-                  <td>{{$rowuser->username}}</td>
-                  <td>{{$rowuser->email}}</td>
-                  @if($rowuser->role == 0)
-                  <td><span class="badge bg-info">{{$rowuser->role}} admin</span></td>
-                  @else
-                  <td><span class="badge bg-warning">{{$rowuser->role}} user</span></td>
-                  @endif
-                  <td>{{$rowuser->created_at}}</td>
-                  <td>
-                  <a href="{{route('admin/home/editmanageruser', $rowuser->id)}}" type="button" class="btn btn-info">Sua</a>
-                  <a href="{{route('admin/home/deletenageruser', $rowuser->id)}}" type="button" class="btn btn-danger">Xoa</a>
+                  <a href="{{route('admin/home/category/edit',$rowcategory->id)}}" type="button" class="btn btn-info">Sua</a>
+                  <a href="{{route('admin/home/category/delete',$rowcategory->id)}}" type="button" class="btn btn-danger">Xoa</a>
                   </td>
                 </tr>
               @endforeach
               @else
                 <tr>
-                  <td colspan="7" class="text-center">Ko tim thay du lieu!!! Vui long thuc hien them du lieu!!!</td>
+                  <td colspan="4" class="text-center">Ko tim thay du lieu!!! Vui long thuc hien them du lieu!!!</td>
                 </tr>
               @endif
               </tbody>
             </table>
-            {{$users->appends(request()->all())->links()}}
+            {{$category->appends(request()->all())->links()}}
           </div>
         </div>
       </div>

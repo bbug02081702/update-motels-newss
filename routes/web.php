@@ -37,7 +37,17 @@ Route::controller(MotelsController::class)->group(function(){
     Route::post('admin/home/edit/{id}', 'update')->name('admin/home/update'); // xu ly sua danh sach phong tro tu form
 
     Route::get('admin/home/delete/{id}', 'destroy')->name('admin/home/delete'); // xu ly xoa danh sach phong tro
+   
+    //-------------------------------CATEGORY-----------------------------------------------------------//
+    Route::get('admin/home/category', 'indexCategory')->name('admin/home/category');
 
+    Route::get('admin/home/category/add', 'createCategory')->name('admin/home/category/add');// hien thi form them danh muc
+    Route::post('admin/home/category/add', 'storeCategory')->name('admin/home/category/store');//xu ly them danh muc phong tro
+
+    Route::get('admin/home/category/edit/{id}', 'editCategory')->name('admin/home/category/edit');
+    Route::post('admin/home/category/update/{id}', 'updateCategory')->name('admin/home/category/update');
+
+    Route::get('admin/home/category/delete/{id}', 'destroyCategory')->name('admin/home/category/delete');
 });
 
 
@@ -54,6 +64,7 @@ Route::controller(UserController::class)->group(function(){
    Route::post('admin/home/updatemanageruser/{id}', 'updateUserManager')->name('admin/home/updatemanageruser'); // xu ly sua user tu form
 
    Route::get('admin/home/deletemanageruser/{id}', 'destroyUserManager')->name('admin/home/deletenageruser'); // xu ly xoa user
+
 
 
    //----------------------------------------------USER-ACCOUNT--------------------------------//

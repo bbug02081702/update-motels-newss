@@ -15,8 +15,8 @@ class LoginController extends Controller
 
     public function loginproses(Request $request){
         $validated = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i|max:28',
+            'password' => 'required|max:28',
         ]);
         if(Auth::attempt($request->only('email','password'))){
             return \redirect('admin/home');
@@ -32,7 +32,7 @@ class LoginController extends Controller
     public function registeruseradmin(Request $request){
         $validated = $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i|max:28',
             'password' => 'required',
         ]);
         User::create([

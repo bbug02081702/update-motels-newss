@@ -97,5 +97,48 @@ class MotelsController extends Controller
         $motels->delete();
         return redirect()->route('admin/home')->with('Thongbao', 'Xoa danh sach phong tro thanh cong');
     }
+
+    // hien thi giao dien quan ly danh muc phong tro
+    public function indexCategory(){
+        $category = Motels::orderBy('created_at', 'DESC')->paginate(2);
+          // xu ly tim kiem theo ten danh muc
+        if($key = request()->category){
+             $category =  Motels::orderBy('created_at', 'DESC')->where('category_id', 'LIKE', '%'.$key.'%')->paginate(2);
+        }
+        return view('admin.managermotels.category.index',compact('category'));
+    }
+
+    // hien thi giao dien them danh muc phong tro
+    public function createCategory(){
+        return view('admin.managermotels.category.add');
+    }
+
+    // xu ly them danh muc phong tro
+    public function storeCategory(Request $request){
+        $category = Motels::create($request->all());
+        return redirect()->route('admin/home/category')->with('Thongbao', 'Them danh muc thanh cong');
+    }
+
+    //hien giao dien sua danh muc phong tro
+    public function editCategory($id){
+       $category = Motels::find($id);
+       return view('admin/managermotels/category/edit',compact('category'));
+    }
+
+    // xu ly sua danh muc phong tro
+    public function updateCategory(Request $request, $id){
+        $category = Motels::find($id);
+        $category->update($request->all());
+        return redirect()->route('admin/home/category')->with('Thongbao', 'Sua thanh cong danh muc');
+    }
+
+    //xu ly xoa danh muc phong tro
+    public function destroyCategory($id){
+        $category = Motels::find($id);
+        $category->delete();
+        return redirect()->route('admin/home/category')->with('Thongbao', 'Xoa thanh cong danh muc');
+    }
+  
+
     
 }

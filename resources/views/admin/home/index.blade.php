@@ -236,6 +236,12 @@
           </li>
           <li class="nav-header">MANAGER</li>
           <li class="nav-item">
+            <a href="{{route('admin/home/category')}}" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Danh muc</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('admin/home/manageruser')}}" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Users</p>
@@ -278,7 +284,9 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+    @yield('category')
     @yield('content')
+  
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
