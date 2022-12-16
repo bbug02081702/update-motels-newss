@@ -16,10 +16,10 @@ class UserLoginController extends Controller
 
     public function loginProsesUser(Request $request){
         if(Auth::attempt($request->only('email','password'))){
-            return \redirect('');
+            return \redirect('user/home/info');
         }
 
-        return \redirect('admin/login');
+        return \redirect('');
     }
 
     public function registerUser(){

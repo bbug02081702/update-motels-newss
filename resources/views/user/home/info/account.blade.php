@@ -65,16 +65,8 @@
         <div class="user_profile_account_body">
           <ul>
             <li>
-              <a href="/nap-tien.html">
-                <i class="fa fa-angle-right"></i> Nạp tiền </a>
-            </li>
-            <li>
               <a href="/doi-mat-khau.html">
                 <i class="fa fa-angle-right"></i> Đổi mật khẩu </a>
-            </li>
-            <li>
-              <a href="/lich-su-nap-tien.html">
-                <i class="fa fa-angle-right"></i> Lịch sử nạp tiền </a>
             </li>
           </ul>
         </div>

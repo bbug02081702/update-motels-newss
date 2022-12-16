@@ -68,8 +68,9 @@ Route::controller(UserController::class)->group(function(){
 
 
    //----------------------------------------------USER-ACCOUNT--------------------------------//
-   Route::get('user/home', 'homeUser')->name('user/home'); 
+   Route::get('user/home/info', 'homeUser')->name('user/home/info'); 
    //test url info
+
 
 });
 

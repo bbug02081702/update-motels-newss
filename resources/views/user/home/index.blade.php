@@ -124,6 +124,7 @@
         <div class="container">
           <div class="pull-left"></div>
           <div class="pull-right">
+            @yield('userwelcome')
             <div class="user_welcome">
               <a class="btn btn-login" href="{{route('user/register')}}" rel="nofollow">
                 <i class="fa fa-user-plus"></i> Đăng ký </a>

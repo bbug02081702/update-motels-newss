@@ -64,13 +64,22 @@ class UserController extends Controller
 
 //-----------------------------------USER-------------------------------------//
    public function homeUser(){
+    // return view('user.home.activeuser');
+
     $users = DB::table('users')
     ->join('motels', 'users.id', '=', 'motels.id')
     ->join('districts', 'users.id', '=', 'districts.id')
     ->select('users.*', 'motels.*', 'districts.*')
     ->get();
-    dd($users);
-    return view('user.home.activeuser',compact('users'));
+    echo($users);
+    // return view('user.home.info.account',compact('users'));
    }
+//    $users = DB::table('users')
+//    ->join('motels', 'users.id', '=', 'motels.id')
+//    ->join('districts', 'users.id', '=', 'districts.id')
+//    ->select('users.*', 'motels.*', 'districts.*')
+//    ->get();
+//    dd($users);
+//    return view('user.home.activeuser',compact('users'));
 
 }
