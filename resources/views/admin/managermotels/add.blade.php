@@ -34,8 +34,8 @@
                     <input type="file" name="images" class="form-control" id="">
                 </div>
                 <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh muc</label>
-                    <input type="number" name="category_id" class="form-control" id="" placeholder="Nhap danh muc">
+                    <label for="phone" class="form-label">So dien thoai</label>
+                    <input type="number" name="phone" class="form-control" id="" placeholder="Nhap so dien thoai">
                 </div>
                 <div class="mb-3">
                     <label for="area" class="form-label">Dien tich</label>
@@ -51,7 +51,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="approve" class="form-label">Trang thai</label>
-                    <input type="text" name="approve" class="form-control" id="" placeholder="Nhap trang thai">
+                    <select name="approve" class="form-select" id="">
+                                    <option selected>Chon trang thai:</option>
+                                    <option value="0">Chua thue</option>
+                                    <option value="1">Da thue</option>
+                    </select>
                 </div>
                
                 <button type="submit" class="btn btn-primary">Dong y</button>

@@ -40,6 +40,7 @@ class MotelsController extends Controller
         Motels::where('id',$post->id)->update($update);
 
         $motels = DB::table('motels')->where('id',$id)->get();
+        
         return view('motel.content',compact('motels'));
     }
 
@@ -144,7 +145,7 @@ class MotelsController extends Controller
     public function dasboard(){
         $countUsers = User::all()->count(); //thong ke tong so nguoi dung
         $countPost = Motels::all()->count(); // thong ke tong so bai dang 
-        $countMotelsOk = Motels::where('approve')->count(); // thong ke tong so phong tro da thue
+        $countMotelsOk = Motels::where('approve','1')->count(); // thong ke tong so phong tro da thue
         // dd($countPost);
         
         return view('admin.home.dasboard',compact('countUsers', 'countPost', 'countMotelsOk'));

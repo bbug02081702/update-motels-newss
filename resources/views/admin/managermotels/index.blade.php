@@ -28,7 +28,7 @@
                   <th scope="col">ID</th>
                   <th scope="col">Tieu de</th>
                   <th scope="col">Hinh anh</th>
-                  <th scope="col">Danh muc</th>
+                  <th scope="col">So dien thoai</th>
                   <th scope="col">Dien tich</th>
                   <th scope="col">Gia phong</th>
                   <th scope="col">Dia chi</th>
@@ -48,14 +48,14 @@
                   <td>
                     <img src="{{asset('fotopegawai/'.$row->images)}}" style="width:48px;" alt="">
                   </td>
-                  <td>{{$row->category_id}}</td>
+                  <td>{{$row->phone}}</td>
                   <td>{{$row->area}} m&#178</td>
                   <td>{{$row->price}} VND</td>
                   <td>{{$row->address}}</td>
                   @if($row->approve == 1)
-                  <td><span class="badge bg-success">{{$row->approve}} da duyet</span></td>
+                  <td><span class="badge bg-success">{{$row->approve}} Da thue</span></td>
                   @else
-                  <td><span class="badge bg-danger">{{$row->approve}} chua duyet</span></td>
+                  <td><span class="badge bg-danger">{{$row->approve}} Chua thue</span></td>
                   @endif
                   <td>
                   <a href="{{route('admin/home/edit', $row->id)}}" type="button" class="btn btn-info">Sua</a>

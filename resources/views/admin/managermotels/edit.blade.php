@@ -39,8 +39,8 @@
                     <label for="price" class="form-label">Gia phong</label>
                     <input type="text" name="price" value="{{$motels->price}}" class="form-control" id="">
                 </div> <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh muc</label>
-                    <input type="number" name="category_id" value="{{$motels->category_id}}" class="form-control" id="">
+                    <label for="phone" class="form-label">So dien thoai</label>
+                    <input type="number" name="phone" value="{{$motels->phone}}" class="form-control" id="">
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Dia chi</label>
@@ -48,7 +48,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="approve" class="form-label">Trang thai</label>
-                    <input type="text" name="approve" value="{{$motels->approve}}" class="form-control" id="">
+                    <select name="approve" class="form-select" id="">
+                            <option value="">Chon trang thai:</option>
+                            <option value="0" {{$motels->role == "0" ? 'selected' : ''}}>Chua thue</option>
+                            <option value="1" {{$motels->role == "1"? 'selected' : ''}}>Da thue</option>
+                    </select>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Dong y</button>
