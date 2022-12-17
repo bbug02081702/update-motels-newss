@@ -71,6 +71,7 @@ Route::controller(UserController::class)->group(function(){
    //----------------------------------------------USER-ACCOUNT--------------------------------//
    Route::get('user/home/info', 'homeUser')->name('user/home/info'); 
    //test url info
+   Route::get('user/home/post', 'postUser')->name('user/home/post');
 
 
 });
@@ -103,3 +104,4 @@ Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin/logo
 
 //---------------------------TONG QUAN ADMIN--------------------------//
 Route::get('admin/dasboard', [MotelsController::class, 'dasboard'])->name('admin/dasboard');
+

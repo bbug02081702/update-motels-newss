@@ -81,5 +81,9 @@ class UserController extends Controller
 //    ->get();
 //    dd($users);
 //    return view('user.home.activeuser',compact('users'));
-
+      
+   public function postUser(){
+     return view('user.home.content.postuser');
+   }
 }
+

@@ -180,6 +180,10 @@
               <li class="menu-item-has-children">
                 <a href="" rel="nofollow">Hướng dẫn</a>
               </li>
+              <li>
+              <a href="{{('user/home/post')}}" title="Đăng tin">
+                <i class="fa fa-pencil-square-o"></i>Đăng tin </a>
+              </li>
             </ul>
           </nav>
         </div>
@@ -192,6 +196,7 @@
         @yield('infocontainer')
         @yield('infocontent')
         @yield('infoaccount')
+        @yield('postuser')
       </div>
     </div>
     <footer class="page-footer">
