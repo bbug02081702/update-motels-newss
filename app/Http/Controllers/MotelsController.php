@@ -146,9 +146,10 @@ class MotelsController extends Controller
         $countUsers = User::all()->count(); //thong ke tong so nguoi dung
         $countPost = Motels::all()->count(); // thong ke tong so bai dang 
         $countMotelsOk = Motels::where('approve','1')->count(); // thong ke tong so phong tro da thue
+        $countMotelsNotOk = Motels::where('approve', '0')->count(); //thong ke tong so phong tro chua thue
         // dd($countPost);
         
-        return view('admin.home.dasboard',compact('countUsers', 'countPost', 'countMotelsOk'));
+        return view('admin.home.dasboard',compact('countUsers', 'countPost', 'countMotelsOk', 'countMotelsNotOk'));
     }
     
 }
