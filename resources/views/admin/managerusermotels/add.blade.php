@@ -43,7 +43,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="role" class="form-label">Quyen</label>
-                    <input type="number" name="role" class="form-control" id="" placeholder="Nhap quyen">
+                    <select name="role" class="form-select" id="">
+                                    <option selected>Chon quyen:</option>
+                                    <option value="0">User</option>
+                                    <option value="1">Admin</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="created_at" class="form-label">Ngay tao</label>

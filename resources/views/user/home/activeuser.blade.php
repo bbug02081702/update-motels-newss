@@ -1,4 +1,4 @@
-@extends('user.home.info.account')
+@extends('user.home.index')
 @section('userwelcome')
 <div class="user_welcome">
   <div class="welcome_user_text">Xin chào, <strong>
@@ -8,7 +8,7 @@
     <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Quản lý tài khoản <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <li>Mã tài khoản: <strong>113221</strong>
+      <li>Mã tài khoản: <strong></strong>
       </li>
       <li role="separator" class="divider"></li>
       <li>

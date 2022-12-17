@@ -204,20 +204,20 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Quan ly 
+                Thong ke
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('admin/home')}}" class="nav-link active">
+                <a href="{{route('admin/dasboard')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sach phong tro</p>
+                  <p>Tong quan</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -233,8 +233,14 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
           <li class="nav-header">MANAGER</li>
+          <li class="nav-item">
+            <a href="{{route('admin/home')}}" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Dan sach phong tro</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="{{route('admin/home/category')}}" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
@@ -270,12 +276,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard v1</h1>
+            <h1 class="m-0">Tong quan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <li class="breadcrumb-item active">Tong quan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -286,7 +292,7 @@
     <!-- Main content -->
     @yield('category')
     @yield('content')
-  
+    @yield('dashboard')
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

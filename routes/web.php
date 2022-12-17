@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -98,3 +99,7 @@ Route::post('admin/registeruser', [LoginController::class, 'registeruseradmin'])
 
 //logout-admin
 Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin/logout');
+
+
+//---------------------------TONG QUAN ADMIN--------------------------//
+Route::get('admin/dasboard', [MotelsController::class, 'dasboard'])->name('admin/dasboard');

@@ -19,11 +19,15 @@
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="number" name="email" value="{{$users->email}}" class="form-control" id="" placeholder="Nhap email">
+                    <input type="text" name="email" value="{{$users->email}}" class="form-control" id="" placeholder="Nhap email">
                 </div>
                 <div class="mb-3">
                     <label for="role" class="form-label">Quyen</label>
-                    <input type="number" name="role" value="{{$users->role}}" class="form-control" id="" placeholder="Nhap quyen">
+                    <select name="role" class="form-select" id="">
+                            <option value="">Chon quyen:</option>
+                            <option value="0" {{$users->role == "0" ? 'selected' : ''}}>User</option>
+                            <option value="1" {{$users->role == "1"? 'selected' : ''}}>Admin</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="created_at" class="form-label">Ngay tao</label>

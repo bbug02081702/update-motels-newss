@@ -13,7 +13,7 @@
             <div class="col-md-9">
               <div class="input-group">
                 <span class="input-group-addon">#</span>
-                <input class="form-control text-box single-line" data-val="true" data-val-number="The field UserId must be a number." data-val-required="The UserId field is required." disabled="True" id="UserId" name="UserId" type="number" value="113221">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="The field UserId must be a number." data-val-required="The UserId field is required." disabled="True" id="UserId" name="UserId" type="number" value="">
               </div>
             </div>
           </div>

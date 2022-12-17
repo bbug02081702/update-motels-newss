@@ -48,9 +48,9 @@
                   <td>{{$rowuser->username}}</td>
                   <td>{{$rowuser->email}}</td>
                   @if($rowuser->role == 0)
-                  <td><span class="badge bg-info">{{$rowuser->role}} admin</span></td>
+                  <td><span class="badge bg-info">{{$rowuser->role}} User</span></td>
                   @else
-                  <td><span class="badge bg-warning">{{$rowuser->role}} user</span></td>
+                  <td><span class="badge bg-warning">{{$rowuser->role}} Admin</span></td>
                   @endif
                   <td>{{$rowuser->created_at}}</td>
                   <td>

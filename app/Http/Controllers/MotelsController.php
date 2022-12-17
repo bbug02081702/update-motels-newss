@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Motels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -139,6 +140,14 @@ class MotelsController extends Controller
         return redirect()->route('admin/home/category')->with('Thongbao', 'Xoa thanh cong danh muc');
     }
   
-
+//---------------------------DASBOARD AMDIN----------------------------//  
+    public function dasboard(){
+        $countUsers = User::all()->count(); //thong ke tong so nguoi dung
+        $countPost = Motels::all()->count(); // thong ke tong so bai dang 
+        $countMotelsOk = Motels::where('approve')->count(); // thong ke tong so phong tro da thue
+        // dd($countPost);
+        
+        return view('admin.home.dasboard',compact('countUsers', 'countPost', 'countMotelsOk'));
+    }
     
 }

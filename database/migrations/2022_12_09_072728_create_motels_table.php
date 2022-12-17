@@ -19,16 +19,18 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('price')->nullable();
             $table->integer('area')->nullable();
-            $table->integer('count_view')->nullable();
+            $table->integer('count_view')->default(0)->nullable();
             $table->string('address')->nullable();
             $table->string('latlng')->nullable();
             $table->string('images')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('category_id')->nullable();
-            $table->integer('district_id')->nullable();
+            $table->bigInteger('district_id')->unsigned()->nullable();
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
             $table->string('utilities')->nullable();
             $table->string('phone')->nullable();
-            $table->integer('approve')->nullable();
+            $table->integer('approve')->default(0)->nullable();
             $table->timestamps();
         });
     }

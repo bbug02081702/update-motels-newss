@@ -68,10 +68,10 @@ class UserController extends Controller
 
     $users = DB::table('users')
     ->join('motels', 'users.id', '=', 'motels.id')
-    ->join('districts', 'users.id', '=', 'districts.id')
-    ->select('users.*', 'motels.*', 'districts.*')
+    ->select('users.*', 'motels.*')
     ->get();
-    echo($users);
+    // dd($users);
+     return view('user.home.info.account', compact('users'));
     // return view('user.home.info.account',compact('users'));
    }
 //    $users = DB::table('users')

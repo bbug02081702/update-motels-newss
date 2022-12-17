@@ -19,7 +19,7 @@ class LoginController extends Controller
             'password' => 'required|max:28',
         ]);
         if(Auth::attempt($request->only('email','password'))){
-            return \redirect('admin/home');
+            return \redirect('admin/dasboard');
         }
 
         return \redirect('admin/login');
