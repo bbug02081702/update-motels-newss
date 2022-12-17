@@ -197,6 +197,7 @@
         @yield('infocontent')
         @yield('infoaccount')
         @yield('postuser')
+        @yield('managerpost')
       </div>
     </div>
     <footer class="page-footer">

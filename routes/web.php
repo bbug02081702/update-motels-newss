@@ -72,7 +72,8 @@ Route::controller(UserController::class)->group(function(){
    Route::get('user/home/info', 'homeUser')->name('user/home/info'); 
    //test url info
    Route::get('user/home/post', 'postUser')->name('user/home/post');
-
+   // quan ly tin dang cua nguoi dung
+   Route::get('user/home/managerpost', 'postManagerUser')->name('user/home/managerpost');
 
 });
 

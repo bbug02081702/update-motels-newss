@@ -85,5 +85,10 @@ class UserController extends Controller
    public function postUser(){
      return view('user.home.content.postuser');
    }
+
+   // xu ly quan ly tin dang cua nguoi dung
+   public function postManagerUser(){
+    return view('user.home.info.managerpost');
+   }
 }
 
