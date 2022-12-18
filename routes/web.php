@@ -41,8 +41,11 @@ Route::controller(MotelsController::class)->group(function(){
     
     // xu ly thay doi trang thai phong tro
     Route::get('admin/home/changestatusmotels/{id}', 'changeStatusMotels')->name('admin/home/changestatusmotels');
- 
+    
+    // ---------------------------------PROFILE ADMIN---------------------------------------------------------//
+    Route::get('admin/home/profileadmin', 'profileAdmin')->name('admin/home/profileadmin');
 
+    
     //-------------------------------CATEGORY-----------------------------------------------------------//
     Route::get('admin/home/category', 'indexCategory')->name('admin/home/category');
 

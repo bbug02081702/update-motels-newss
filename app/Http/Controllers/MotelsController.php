@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Motels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class MotelsController extends Controller
 {
@@ -112,6 +113,15 @@ class MotelsController extends Controller
         return redirect()->back();
 
     }
+
+    // hien thi giao dien chi tiet thong tin useradmin
+    public function profileAdmin(){
+        
+        $user = DB::table('users')->get();
+        // dd($user);
+            return view('user.home.info.profile',compact('user')); 
+        }
+    
 
     // hien thi giao dien quan ly danh muc phong tro
     public function indexCategory(){
