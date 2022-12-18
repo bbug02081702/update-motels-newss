@@ -43,7 +43,7 @@
                 <tr>
                   <th scope="row">{{$index + $users->firstItem()}}</th>
                   <td>
-                  <img src="{{asset('fotopegawai/'.$rowuser->avatar)}}" style="width:48px; height:48px; border-radius: 50%" alt="">
+                  <img src="{{asset($rowuser->avatar)}}" style="width:48px; height:48px; border-radius: 50%" alt="">
                   </td>
                   <td>{{$rowuser->username}}</td>
                   <td>{{$rowuser->email}}</td>

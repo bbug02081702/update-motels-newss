@@ -29,15 +29,23 @@ class UserController extends Controller
     public function storeUserManager(Request $request){
         $this->validate($request,[
             'username' => 'required',
+            'avatar' => 'required',
             'email' => 'required',
             
         ]);
-        $users = User::create($request->all());
-        if($request->hasFile('avatar')){
-            $request->file('avatar')->move('fotopegawai/', $request->file('avatar')->getClientOriginalName());
-            $users->avatar = $request->file('avatar')->getClientOriginalName();
-            $users->save();
-         }
+        // $users = User::create($request->all());
+        // dd($users);
+        // if($request->hasFile('avatar')){
+        //     $request->file('avatar')->move('photouser/', $request->file('avatar')->getClientOriginalName());
+        //     $users->avatar = $request->file('avatar')->getClientOriginalName();
+        //     $users->save();
+        // }
+        $requestData = $request->all();
+        $fileName = time().$request->file('avatar')->getClientOriginalName();
+        $path = $request->file('avatar')->storeAs('createhphotoimages', $fileName, 'public');
+        $requestData["avatar"] = '/storage/'.$path;
+        User::create($requestData);
+        $requestData->save();
         return redirect()->route('admin/home/manageruser')->with('Thongbao', 'Them danh sach user thanh cong');
     }
 

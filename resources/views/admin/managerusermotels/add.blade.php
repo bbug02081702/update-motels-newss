@@ -23,7 +23,7 @@
             </ul>
           </div>
           @endif
-              <form action="{{route('admin/home/storemanageruser')}}" method="POST" enctype="mutilpart/form-data">
+              <form action="{{route('admin/home/storemanageruser')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>

@@ -92,6 +92,7 @@ Route::get('user/logout', [LoginController::class, 'logoutUser'])->name('user/lo
 
 //------------------------login admin-------------------//
 //login-admin
+
 Route::get('admin/login', [LoginController::class, 'login'])->name('admin/login');
 Route::post('admin/loginproses', [LoginController::class, 'loginproses'])->name('admin/loginproses');
 
@@ -100,7 +101,7 @@ Route::get('admin/register', [LoginController::class, 'register'])->name('admin/
 Route::post('admin/registeruser', [LoginController::class, 'registeruseradmin'])->name('admin/registeruser');
 
 //logout-admin
-Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin/logout');
+Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin/logout');;
 
 
 //---------------------------TONG QUAN ADMIN--------------------------//

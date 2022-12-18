@@ -17,15 +17,18 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        // if(Auth::check()){
+        //     $user = Auth::user();
+        //     if($user->level == 1)
+        //         return $next($request);
+        //     else
+        //    return redirect('admin/login');
+        // }
+        // else
+        // return redirect('admin/login');
         if(Auth::check()){
-            $user = Auth::user();
-            if($user->level ==1)
-                return $next($request);
-            else
-           return redirect('index');
+            return $next($request);
         }
-        else
-        return redirect('index');
         
     }
 }
