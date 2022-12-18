@@ -31,12 +31,12 @@ class LoginController extends Controller
 
     public function registeruseradmin(Request $request){
         $validated = $request->validate([
-            'name' => 'required',
+            'username' => 'required',
             'email' => 'required|regex:/(.+)@(.+)\.(.+)/i|max:28',
             'password' => 'required',
         ]);
         User::create([
-            'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'remember_token' => Str::random(60),

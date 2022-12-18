@@ -35,7 +35,7 @@
         <form action="{{route('admin/loginproses')}}" method="post">
         @csrf
           <div class="input-group mb-3">
-            <input type="email" class="form-control" class="@error('email') is-invalid @enderror" name="email" placeholder="Email">
+            <input type="email" class="form-control" class="@error('email') is-invalid @enderror" name="email" placeholder="Nhap email">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" class="@error('password') is-invalid @enderror" name="password" placeholder="Password">
+            <input type="password" class="form-control" class="@error('password') is-invalid @enderror" name="password" placeholder="Nhap password">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-8">
+            <div class="col-7">
               <div class="icheck-primary">
                 <input type="checkbox" id="remember">
                 <label for="remember">
@@ -60,8 +60,8 @@
               </div>
             </div>
             <!-- /.col -->
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <div class="col-5">
+              <button type="submit" class="btn btn-primary btn-block">Dang nhap</button>
             </div>
             <!-- /.col -->
           </div>
@@ -72,7 +72,7 @@
 
     
         <p class="mb-0">
-          <a href="{{route('admin/register')}}" class="text-center">Register a new account</a>
+          <a href="{{route('admin/register')}}" class="text-center">Dang ky tai khoan moi</a>
         </p>
       </div>
       <!-- /.card-body -->

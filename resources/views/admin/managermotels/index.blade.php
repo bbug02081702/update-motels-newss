@@ -52,11 +52,13 @@
                   <td>{{$row->area}} m&#178</td>
                   <td>{{$row->price}} VND</td>
                   <td>{{$row->address}}</td>
-                  @if($row->approve == 1)
-                  <td><span class="badge bg-success">{{$row->approve}} Da thue</span></td>
-                  @else
-                  <td><span class="badge bg-danger">{{$row->approve}} Chua thue</span></td>
-                  @endif
+                  <td>
+                    @if($row->approve==1)
+                    <a href="{{ route('admin/home/changestatusmotels', $row->id) }}" class="badge bg-success">Da thue</a>
+                    @else
+                    <a href="{{ route('admin/home/changestatusmotels', $row->id) }}" class="badge bg-danger">Chua thue</a>
+                    @endif
+                  </td>
                   <td>
                   <a href="{{route('admin/home/edit', $row->id)}}" type="button" class="btn btn-info">Sua</a>
                   <a href="{{route('admin/home/delete', $row->id)}}" type="button" class="btn btn-danger">Xoa</a>

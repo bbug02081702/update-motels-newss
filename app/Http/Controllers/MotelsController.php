@@ -100,6 +100,19 @@ class MotelsController extends Controller
         return redirect()->route('admin/home')->with('Thongbao', 'Xoa danh sach phong tro thanh cong');
     }
 
+    // xu ly thay doi trang thai phong tro theo id
+    public function changeStatusMotels($id){
+        $getStatusMotels = Motels::select('approve')->where('id', $id)->first();
+        if($getStatusMotels->approve == 1){
+             $approve = 0;
+        }else{
+            $approve = 1;
+        }
+        Motels::where('id', $id)->update(['approve'=>$approve]);
+        return redirect()->back();
+
+    }
+
     // hien thi giao dien quan ly danh muc phong tro
     public function indexCategory(){
         $category = Motels::orderBy('created_at', 'DESC')->paginate(2);

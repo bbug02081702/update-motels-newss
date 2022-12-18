@@ -50,8 +50,8 @@
                     <label for="approve" class="form-label">Trang thai</label>
                     <select name="approve" class="form-select" id="">
                             <option value="">Chon trang thai:</option>
-                            <option value="0" {{$motels->role == "0" ? 'selected' : ''}}>Chua thue</option>
-                            <option value="1" {{$motels->role == "1"? 'selected' : ''}}>Da thue</option>
+                            <option value="0" {{$motels->approve == "0" ? 'selected' : ''}}>Chua thue</option>
+                            <option value="1" {{$motels->approve == "1" ? 'selected' : ''}}>Da thue</option>
                     </select>
                 </div>
                 

@@ -45,8 +45,8 @@
                     <label for="role" class="form-label">Quyen</label>
                     <select name="role" class="form-select" id="">
                                     <option selected>Chon quyen:</option>
-                                    <option value="0">User</option>
-                                    <option value="1">Admin</option>
+                                    <option value="1">User</option>
+                                    <option value="0">Admin</option>
                     </select>
                 </div>
                 <div class="mb-3">

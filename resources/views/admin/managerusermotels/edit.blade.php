@@ -25,8 +25,8 @@
                     <label for="role" class="form-label">Quyen</label>
                     <select name="role" class="form-select" id="">
                             <option value="">Chon quyen:</option>
-                            <option value="0" {{$users->role == "0" ? 'selected' : ''}}>User</option>
-                            <option value="1" {{$users->role == "1"? 'selected' : ''}}>Admin</option>
+                            <option value="1" {{$users->role == "0" ? 'selected' : ''}}>User</option>
+                            <option value="0" {{$users->role == "1" ? 'selected' : ''}}>Admin</option>
                     </select>
                 </div>
                 <div class="mb-3">

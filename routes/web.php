@@ -38,7 +38,11 @@ Route::controller(MotelsController::class)->group(function(){
     Route::post('admin/home/edit/{id}', 'update')->name('admin/home/update'); // xu ly sua danh sach phong tro tu form
 
     Route::get('admin/home/delete/{id}', 'destroy')->name('admin/home/delete'); // xu ly xoa danh sach phong tro
-   
+    
+    // xu ly thay doi trang thai phong tro
+    Route::get('admin/home/changestatusmotels/{id}', 'changeStatusMotels')->name('admin/home/changestatusmotels');
+ 
+
     //-------------------------------CATEGORY-----------------------------------------------------------//
     Route::get('admin/home/category', 'indexCategory')->name('admin/home/category');
 
@@ -65,7 +69,9 @@ Route::controller(UserController::class)->group(function(){
    Route::post('admin/home/updatemanageruser/{id}', 'updateUserManager')->name('admin/home/updatemanageruser'); // xu ly sua user tu form
 
    Route::get('admin/home/deletemanageruser/{id}', 'destroyUserManager')->name('admin/home/deletenageruser'); // xu ly xoa user
-
+   
+   // xu ly thay doi trang thai quyen user
+   Route::get('admin/home/changestatususer/{id}', 'changeStatusUser')->name('admin/home/changestatususer');
 
 
    //----------------------------------------------USER-ACCOUNT--------------------------------//

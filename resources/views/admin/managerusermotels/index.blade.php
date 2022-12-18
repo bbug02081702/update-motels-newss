@@ -47,11 +47,13 @@
                   </td>
                   <td>{{$rowuser->username}}</td>
                   <td>{{$rowuser->email}}</td>
-                  @if($rowuser->role == 0)
-                  <td><span class="badge bg-info">{{$rowuser->role}} User</span></td>
-                  @else
-                  <td><span class="badge bg-warning">{{$rowuser->role}} Admin</span></td>
-                  @endif
+                  <td>
+                    @if($rowuser->role == 1)
+                    <a href="{{ route('admin/home/changestatususer', $rowuser->id) }}" class="badge bg-success">User</a>
+                    @else
+                    <a href="{{ route('admin/home/changestatususer', $rowuser->id) }}" class="badge bg-danger">Admin</a>
+                    @endif
+                  </td>
                   <td>{{$rowuser->created_at}}</td>
                   <td>
                   <a href="{{route('admin/home/editmanageruser', $rowuser->id)}}" type="button" class="btn btn-info">Sua</a>

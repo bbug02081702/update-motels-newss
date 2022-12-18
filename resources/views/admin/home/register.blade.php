@@ -26,7 +26,7 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg">Register in to start your session</p>
-        @error('name')
+        @error('username')
            <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         @error('email')
@@ -38,7 +38,7 @@
         <form action="{{route('admin/registeruser')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="name" class="@error('name') is-invalid @enderror" placeholder="Name">
+            <input type="text" class="form-control" name="username" class="@error('username') is-invalid @enderror" placeholder="Nhap username">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="email" class="form-control" class="@error('email') is-invalid @enderror" name="email" placeholder="Email">
+            <input type="email" class="form-control" class="@error('email') is-invalid @enderror" name="email" placeholder="Nhap email">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" class="@error('password') is-invalid @enderror" name="password" placeholder="Password">
+            <input type="password" class="form-control" class="@error('password') is-invalid @enderror" name="password" placeholder="Nhap password">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -72,7 +72,7 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block">Dang ky</button>
             </div>
             <!-- /.col -->
           </div>
@@ -83,7 +83,7 @@
 
     
         <p class="mb-0">
-          <a href="{{route('admin/login')}}" class="text-center">Login</a>
+          <a href="{{route('admin/login')}}" class="text-center">Dang nhap</a>
         </p>
       </div>
       <!-- /.card-body -->

@@ -45,10 +45,9 @@ class UserController extends Controller
         $path = $request->file('avatar')->storeAs('createhphotoimages', $fileName, 'public');
         $requestData["avatar"] = '/storage/'.$path;
         User::create($requestData);
-        $requestData->save();
         return redirect()->route('admin/home/manageruser')->with('Thongbao', 'Them danh sach user thanh cong');
     }
-
+   
     // hien thi giao dien sua danh sach phong tro 
     public function editUserManager($id){
         $users = User::find($id);
@@ -68,6 +67,19 @@ class UserController extends Controller
         $users = User::find($id);
         $users->delete();
         return redirect()->route('admin/home/manageruser')->with('Thongbao', 'Xoa user thanh cong');
+    }
+
+    // xu ly thay doi quyen user theo id
+    public function changeStatusUser($id){
+        $getStatusUser = User::select('role')->where('id', $id)->first();
+        if($getStatusUser->role == 1){
+            $role = 0;
+        }else{
+            $role = 1;
+        }
+        User::where('id', $id)->update(['role'=>$role]);
+        return redirect()->back();
+
     }
 
 //-----------------------------------USER-------------------------------------//
