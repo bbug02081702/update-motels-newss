@@ -44,7 +44,9 @@ Route::controller(MotelsController::class)->group(function(){
     
     // ---------------------------------PROFILE ADMIN---------------------------------------------------------//
     Route::get('admin/home/profileadmin', 'profileAdmin')->name('admin/home/profileadmin');
-
+    Route::post('admin/home/updateprofileadmin', 'updateProfileAdmin')->name('admin/home/updateprofileadmin'); //cap  nhat thong tin admin
+    Route::post('admin/home/updateadminpicture', 'updateAdminPicture')->name('admin/home/updateadminpicture'); //cap nhat anh admin
+    Route::post('admin/home/changeadminpassword', 'changeAdminPassword')->name('admin/home/changeadminpassword'); //thay doi mk admin
     
     //-------------------------------CATEGORY-----------------------------------------------------------//
     Route::get('admin/home/category', 'indexCategory')->name('admin/home/category');

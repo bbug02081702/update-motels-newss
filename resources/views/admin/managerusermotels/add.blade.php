@@ -39,7 +39,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mat khau</label>
-                    <input type="password" name="email" class="form-control" id="" placeholder="Nhap mat khau">
+                    <input type="password" name="password" class="form-control" id="" placeholder="Nhap mat khau">
                 </div>
                 <div class="mb-3">
                     <label for="role" class="form-label">Quyen</label>

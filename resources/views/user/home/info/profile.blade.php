@@ -9,7 +9,7 @@
             <div class="profile-img-wrap">
               <div class="profile-img">
                 <a href="#">
-                  <img alt="" src="{{ URL::to('storage/createhphotoimages/'.Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
+                  <img alt="" src="{{Auth::user()->avatar}}" alt="{{ Auth::user()->name }}">
                 </a>
               </div>
             </div>
@@ -18,8 +18,6 @@
                 <div class="col-md-5">
                   <div class="profile-info-left">
                     <h3 class="user-name m-t-0 mb-0">{{ Auth::user()->username}}</h3>
-                    <!-- <h6 class="text-muted">{{ Session::get('department') }}</h6>
-                    <small class="text-muted">{{ Session::get('position') }}</small> -->
                     <div class="staff-id">User ID : {{Auth::user()->id}}</div>
                     <div class="small doj text-muted">Ngay tao: {{ Auth::user()->created_at}}</div>
                   </div>

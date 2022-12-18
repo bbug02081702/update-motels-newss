@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Motels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class MotelsController extends Controller
@@ -116,11 +117,95 @@ class MotelsController extends Controller
 
     // hien thi giao dien chi tiet thong tin useradmin
     public function profileAdmin(){
-        
-        $user = DB::table('users')->get();
-        // dd($user);
-            return view('user.home.info.profile',compact('user')); 
+        return view('admin.home.adminprofile');    
+    }
+
+    // xu ly update thong tin admin
+    function updateProfileAdmin(Request $request){
+           
+        $validator = \Validator::make($request->all(),[
+            'username'=>'required',
+            'email'=> 'required|email|unique:users,email,'.Auth::user()->id,
+            
+        ]);
+
+        if(!$validator->passes()){
+            return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
+        }else{
+             
         }
+    }
+
+    function updateAdminPicture(Request $request){
+        $path = 'users/images/';
+        $file = $request->file('admin_image');
+        $new_name = 'UIMG_'.date('Ymd').uniqid().'.jpg';
+
+        //tai anh moi len
+        $upload = $file->move(public_path($path), $new_name);
+        
+        if( !$upload ){
+            return response()->json(['status'=>0,'msg'=>'Đã xảy ra lỗi, tải ảnh mới lên không thành công.']);
+        }else{
+            //Lay anh cu
+            $oldPicture = User::find(Auth::user()->id)->getAttributes()['avatar'];
+
+            if( $oldPicture != '' ){
+                if( \File::exists(public_path($path.$oldPicture))){
+                    \File::delete(public_path($path.$oldPicture));
+                }
+            }
+
+            //Update DB
+            $update = User::find(Auth::user()->id)->update(['picture'=>$new_name]);
+
+            if( !$upload ){
+                return response()->json(['status'=>0,'msg'=>'Đã xảy ra lỗi, cập nhật ảnh trong db không thành công.']);
+            }else{
+                return response()->json(['status'=>1,'msg'=>'Ảnh hồ sơ của bạn đã được cập nhật thành công']);
+            }
+        }
+    }
+
+
+    function changeAdminPassword(Request $request){
+        //Validate form
+        $validator = \Validator::make($request->all(),[
+            'oldpassword'=>[
+                'required', function($attribute, $value, $fail){
+                    if( !\Hash::check($value, Auth::user()->password) ){
+                        return $fail(__('Mật khẩu hiện tại không chính xác'));
+                    }
+                },
+                'min:4',
+                'max:30'
+             ],
+             'newpassword'=>'required|min:8|max:30',
+             'cnewpassword'=>'required|same:newpassword'
+         ],[
+             'oldpassword.required'=>'Nhập mật khẩu hiện tại của bạn',
+             'oldpassword.min'=>'Mật khẩu cũ phải có ít nhất 4 ký tự',
+             'oldpassword.max'=>'Mật khẩu cũ không được lớn hơn 30 ký tự',
+             'newpassword.required'=>'Nhập mật khẩu mới',
+             'newpassword.min'=>'Mật khẩu mới phải có ít nhất 4 ký tự',
+             'newpassword.max'=>'Mật khẩu mới không được lớn hơn 30 ký tự',
+             'cnewpassword.required'=>'Nhập lại mật khẩu mới của bạn',
+             'cnewpassword.same'=>'Mật khẩu mới và các nhận mật khẩu mới phải khớp'
+         ]);
+
+        if( !$validator->passes() ){
+            return response()->json(['status'=>0,'error'=>$validator->errors()->toArray()]);
+        }else{
+             
+         $update = User::find(Auth::user()->id)->update(['password'=>\Hash::make($request->newpassword)]);
+
+         if( !$update ){
+             return response()->json(['status'=>0,'msg'=>'Đã xảy ra lỗi, Không thể cập nhật mật khẩu trong db']);
+         }else{
+             return response()->json(['status'=>1,'msg'=>'Mật khẩu của bạn đã được thay đổi thành công']);
+         }
+        }
+    }
     
 
     // hien thi giao dien quan ly danh muc phong tro
